@@ -1,7 +1,8 @@
 {
   "personal_info": {
     "name": "Diego Sasco",
-    "title": "Arquitecto de Software \u0026 Especialista en Automatización / IA"
+    "title": "Desarrollador de Software Senior",
+    "about_me": "Desarrollador de Software Senior con más de 7 años de experiencia en el diseño y automatización de sistemas para el sector financiero, retail e industrial. Especializado en integración de sistemas legacy, arquitectura IoT y soluciones RPA, con competencias en backend distribuido (C#/.NET, Go, gRPC, RabbitMQ) y formación en seguridad informática. Profesional orientado a resultados, con comunicación asertiva y enfoque en la confiabilidad de sistemas críticos."
   },
   "skills": [
     {
@@ -133,14 +134,6 @@
       "experience_text": "7 años y 4 meses"
     },
     {
-      "id": "customer_service",
-      "name": "Atención al Público \u0026 Gestión de Clientes",
-      "category": "Habilidades Funcionales",
-      "months_experience": 15,
-      "years_experience": 1.25,
-      "experience_text": "1 año y 3 meses"
-    },
-    {
       "id": "leadership",
       "name": "Liderazgo de Equipos \u0026 Proyectos",
       "category": "Competencias Blandas",
@@ -168,17 +161,17 @@
       "id": "problem_solving",
       "name": "Resolución de Problemas \u0026 Proactividad",
       "category": "Competencias Blandas",
-      "months_experience": 112,
-      "years_experience": 9.333333333333334,
-      "experience_text": "9 años y 4 meses"
+      "months_experience": 120,
+      "years_experience": 10,
+      "experience_text": "10 años"
     },
     {
       "id": "security_mindset",
       "name": "Cultura de Seguridad \u0026 Confiabilidad",
       "category": "Competencias Blandas",
-      "months_experience": 82,
-      "years_experience": 6.833333333333333,
-      "experience_text": "6 años y 10 meses"
+      "months_experience": 88,
+      "years_experience": 7.333333333333333,
+      "experience_text": "7 años y 4 meses"
     }
   ],
   "work_experience": [
@@ -189,7 +182,7 @@
       "end_date": "2026-06-10",
       "duration_text": "2 años",
       "period_text": "Jul 2024 - Presente",
-      "description": "Diseño y desarrollo de sistemas distribuidos, software a medida y soluciones de automatización IoT, colaborando estrechamente con técnicos y especialistas en hardware electrónico. Aplicación de metodologías avanzadas de desarrollo asistido por IA profesional.",
+      "description": "Diseñé e implementé sistemas distribuidos en Go y C#/.NET para automatización IoT e integración legacy, colaborando con especialistas en hardware electrónico en el prototipado de soluciones embebidas. Aplicación sistemática de metodologías de desarrollo asistido por IA para maximizar la calidad y velocidad de entrega.",
       "technologies": [
         "golang",
         "csharp",
@@ -206,7 +199,7 @@
       "projects": [
         {
           "name": "RpPOS - Arquitectura IoT (Golden Wash)",
-          "description": "Diseño y desarrollo de la interfaz de usuario y control de hardware (GPIO) en hardware limitado (Raspberry Pi) para Punto de Venta a medida de Golden Wash.",
+          "description": "Diseñé e implementé la interfaz de usuario y el control de hardware (GPIO) en Go con Fyne UI para un Punto de Venta embebido en Raspberry Pi, optimizando el rendimiento en un entorno de recursos limitados para control de maquinaria industrial.",
           "start_date": "2026-04-01",
           "end_date": "2026-06-10",
           "period_text": "Abr 2026 - Presente",
@@ -220,7 +213,7 @@
         },
         {
           "name": "Proxy Inverso Financiero",
-          "description": "Implementación de un Proxy Inverso que traduce protocolos legacy SOAP a gRPC, permitiendo la comunicación eficiente con pasarelas financieras de GetNet / Transact de Santander (New Age Data).",
+          "description": "Implementé un proxy inverso en C# que traduce protocolos legacy SOAP a gRPC, habilitando la comunicación eficiente con pasarelas financieras de GetNet/Santander y consolidando la integración de sistemas transaccionales.",
           "start_date": "2026-04-01",
           "end_date": "2026-06-10",
           "period_text": "Abr 2026 - Presente",
@@ -233,8 +226,8 @@
           "url": ""
         },
         {
-          "name": "Sistema de Telemetría y Automatización de Hardware (Confidencial)",
-          "description": "Diseño y programación de la capa de comunicación (GPIO, protocolos seriales) y control de firmware para enlazar microcontroladores IoT con APIs distribuidas. Colaboración directa en prototipado electrónico de hardware.",
+          "name": "Plataforma de Monitoreo Remoto de Activos IoT",
+          "description": "Diseñé y programé la plataforma de monitoreo remoto de activos IoT, implementando la capa de comunicación (GPIO, protocolos seriales) y control de firmware para enlazar microcontroladores con APIs distribuidas en Go y gRPC, habilitando el control remoto de dispositivos industriales en entornos de producción.",
           "start_date": "2024-07-01",
           "end_date": "2026-03-31",
           "period_text": "Jul 2024 - Mar 2026",
@@ -245,52 +238,23 @@
             "grpc"
           ],
           "url": ""
-        },
-        {
-          "name": "Flujo de Ingeniería Asistida por IA (SDD \u0026 TDD)",
-          "description": "Adopción de un flujo de trabajo para el desarrollo con IA de forma profesional. Aplicación sistemática de Spec-Driven Development (SDD), Test-Driven Development (TDD) e integración con test harnesses externos para simulación de escenarios lógicos complejos y validación de software en entornos aislados.",
-          "start_date": "2024-07-01",
-          "end_date": "2026-06-10",
-          "period_text": "Jul 2024 - Presente",
-          "duration_text": "2 años",
-          "technologies": [
-            "generative_ai",
-            "python",
-            "docker",
-            "ai_assisted_dev"
-          ],
-          "url": ""
-        },
-        {
-          "name": "CV Pipeline CLI",
-          "description": "Pipeline automatizado en Go y Astro para compilar hojas de vida estructuradas calculando años de experiencia reales sin solapamientos.",
-          "start_date": "2026-06-01",
-          "end_date": "2026-06-10",
-          "period_text": "Jun 2026 - Presente",
-          "duration_text": "1 mes",
-          "technologies": [
-            "golang",
-            "astro",
-            "docker"
-          ],
-          "url": ""
         }
       ]
     },
     {
       "company": "Real2B",
-      "role": "Analista Operacional \u0026 Control de Flujo",
+      "role": "Soporte Técnico y Operaciones de TI",
       "start_date": "2024-01-01",
       "end_date": "2024-06-30",
       "duration_text": "6 meses",
       "period_text": "Ene 2024 - Jun 2024",
-      "description": "Gestión integral de operaciones de venta de servicios, transacciones de caja, soporte técnico (Help Desk) a usuarios y atención directa al público en múltiples locales.",
+      "description": "Proporcioné soporte técnico (Help Desk) a usuarios en múltiples locales, diagnosticando y resolviendo incidencias de infraestructura de TI y sistemas de comunicación. Administré la continuidad operativa de sistemas transaccionales y coordiné la resolución de problemas técnicos con equipos internos.",
       "technologies": [
         "help_desk",
-        "customer_service",
+        "problem_solving",
         "teamwork",
         "assertive_communication",
-        "problem_solving"
+        "security_mindset"
       ],
       "projects": null
     },
@@ -301,26 +265,13 @@
       "end_date": "2023-12-31",
       "duration_text": "1 año",
       "period_text": "Ene 2023 - Dic 2023",
-      "description": "Liderazgo de un proyecto integral de normalización de inventarios (mayoristas y minoristas), depuración de discrepancias de stock histórico y definición de métodos de trabajo estandarizados.",
+      "description": "Lideré un proyecto integral de normalización de inventarios (mayoristas y minoristas), diagnosticando y depurando discrepancias de stock histórico en bases de datos SQL, y definiendo métodos de trabajo estandarizados que simplificaron los procesos de control.",
       "technologies": [
         "sql",
         "leadership",
         "problem_solving"
       ],
-      "projects": [
-        {
-          "name": "Sluckis - Normalización de Inventario",
-          "description": "Auditoría integral y normalización de la base de datos de stock histórico (mayorista y minorista), implementando controles sistemáticos.",
-          "start_date": "2023-01-01",
-          "end_date": "2023-12-31",
-          "period_text": "Ene 2023 - Dic 2023",
-          "duration_text": "1 año",
-          "technologies": [
-            "sql"
-          ],
-          "url": ""
-        }
-      ]
+      "projects": null
     },
     {
       "company": "Bionico / Figital Tech",
@@ -329,7 +280,7 @@
       "end_date": "2023-12-31",
       "duration_text": "5 años y 2 meses",
       "period_text": "Nov 2018 - Dic 2023",
-      "description": "Liderazgo técnico en el diseño de soluciones de automatización de procesos de negocio (RPA), microservicios y procesamiento masivo de datos.",
+      "description": "Dirigí el desarrollo de soluciones de automatización de procesos financieros (RPA), microservicios y procesamiento masivo de datos, diseñando una arquitectura observable con RabbitMQ que garantizó la trazabilidad de operaciones críticas.",
       "technologies": [
         "csharp",
         "sql",
@@ -344,7 +295,7 @@
       "projects": [
         {
           "name": "Framework RPA Financiero",
-          "description": "Desarrollo de bots de escritorio (Windows UI Automation) y observabilidad (RabbitMQ) para automatizar la inserción de datos en sistemas contables.",
+          "description": "Desarrollé un framework de bots de escritorio (Windows UI Automation) en C# con observabilidad vía RabbitMQ, automatizando la inserción de datos en sistemas contables y reduciendo significativamente la intervención manual en procesos financieros críticos.",
           "start_date": "2018-11-01",
           "end_date": "2022-12-31",
           "period_text": "Nov 2018 - Dic 2022",
@@ -358,27 +309,13 @@
         },
         {
           "name": "Motor de Extracción PDF",
-          "description": "Desarrollo de un motor inteligente basado en coordenadas X/Y (PdfPig) sobre PDFs semi-estructurados, permitiendo procesamiento masivo de facturas.",
+          "description": "Construí un motor inteligente de extracción basado en coordenadas X/Y (PdfPig) sobre PDFs semi-estructurados en C#, habilitando el procesamiento masivo automatizado de facturas y estandarizando la ingesta de documentos financieros.",
           "start_date": "2020-06-01",
           "end_date": "2021-06-30",
           "period_text": "Jun 2020 - Jun 2021",
           "duration_text": "1 año y 1 mes",
           "technologies": [
             "csharp"
-          ],
-          "url": ""
-        },
-        {
-          "name": "Soluciones de IA Generativa",
-          "description": "Desarrollo de agentes y flujos de automatización integrando Modelos de Lenguaje (LLMs) para la optimización de procesos de negocio.",
-          "start_date": "2023-01-01",
-          "end_date": "2023-12-31",
-          "period_text": "Ene 2023 - Dic 2023",
-          "duration_text": "1 año",
-          "technologies": [
-            "generative_ai",
-            "python",
-            "javascript"
           ],
           "url": ""
         }
@@ -391,7 +328,7 @@
       "end_date": "2023-12-31",
       "duration_text": "6 años y 10 meses",
       "period_text": "Mar 2017 - Dic 2023",
-      "description": "Automatización de procesos de retail, soporte técnico a usuarios finales (Help Desk), mantenimiento de infraestructura de TI y sistemas de comunicación corporativos.",
+      "description": "Automatizé procesos de retail mediante herramientas personalizadas en C# y SQL, administrando la infraestructura de TI y sistemas de comunicación corporativos, y proporcionando soporte técnico especializado a usuarios finales en un entorno multi-sucursal.",
       "technologies": [
         "csharp",
         "sql",
@@ -402,48 +339,21 @@
         "teamwork",
         "security_mindset"
       ],
-      "projects": [
-        {
-          "name": "Automatización de Inventario y Retail",
-          "description": "Creación de herramientas personalizadas en C# para automatizar la creación de artículos, precios, ingresos de facturas e importaciones.",
-          "start_date": "2017-03-01",
-          "end_date": "2018-12-31",
-          "period_text": "Mar 2017 - Dic 2018",
-          "duration_text": "1 año y 10 meses",
-          "technologies": [
-            "csharp",
-            "sql"
-          ],
-          "url": ""
-        },
-        {
-          "name": "Optimización de Flujos Administrativos",
-          "description": "Consultoría y mejora de procesos administrativos de control interno y auditoría interna de TI.",
-          "start_date": "2020-01-01",
-          "end_date": "2023-12-31",
-          "period_text": "Ene 2020 - Dic 2023",
-          "duration_text": "4 años",
-          "technologies": [
-            "csharp",
-            "sql"
-          ],
-          "url": ""
-        }
-      ]
+      "projects": null
     },
     {
       "company": "PIXI Supermercados",
-      "role": "Encargado de Operaciones",
+      "role": "Supervisor de Operaciones y Logística",
       "start_date": "2016-07-01",
       "end_date": "2017-03-31",
       "duration_text": "9 meses",
       "period_text": "Jul 2016 - Mar 2017",
-      "description": "Supervisión de equipos, administración de personal, control de inventario, arqueos de caja y atención al público (resolución de conflictos y gestión de proveedores).",
+      "description": "Coordiné equipos operativos y supervisé la logística de inventarios en un entorno de alta rotación, implementando controles sistemáticos de stock y optimizando los procesos de recepción de mercadería. Gestión de proveedores y resolución de conflictos operativos.",
       "technologies": [
-        "customer_service",
         "leadership",
         "teamwork",
-        "assertive_communication"
+        "assertive_communication",
+        "problem_solving"
       ],
       "projects": null
     }
@@ -479,7 +389,7 @@
       "start_date": "2015-03-01",
       "end_date": "2016-12-15",
       "period_text": "Mar 2015 - Dic 2016",
-      "status": "1er año cursado"
+      "status": "1er año cursado (formación complementaria en gestión financiera y contable)"
     }
   ],
   "projects": [],

@@ -93,8 +93,9 @@ func MergeIntervals(intervals []Interval) []Interval {
 func ProcessCV(raw *CVRaw) *CVProcessed {
 	processed := &CVProcessed{
 		PersonalInfo: PersonalInfo{
-			Name:  raw.PersonalInfo.Name,
-			Title: raw.PersonalInfo.Title,
+			Name:    raw.PersonalInfo.Name,
+			Title:   raw.PersonalInfo.Title,
+			AboutMe: raw.PersonalInfo.AboutMe,
 			// Contact fields (Email, Website, GitHub, LinkedIn) are deliberately
 			// excluded from the public output. They are injected at PDF generation
 			// time by Puppeteer from .env — never stored in the repo.
@@ -159,16 +160,19 @@ func ProcessCV(raw *CVRaw) *CVProcessed {
 				techIntervals[tech] = append(techIntervals[tech], Interval{Start: pStart, End: pEnd})
 			}
 
-			processedProjects = append(processedProjects, ProjectProcessed{
-				Name:         proj.Name,
-				Description:  proj.Description,
-				StartDate:    pStart.Format("2006-01-02"),
-				EndDate:      pEnd.Format("2006-01-02"),
-				PeriodText:   pPeriodText,
-				DurationText: FormatDuration(pMonths),
-				Technologies: proj.Technologies,
-				URL:          proj.URL,
-			})
+			// Only include visible projects in rendered output
+			if proj.VisibleWeb {
+				processedProjects = append(processedProjects, ProjectProcessed{
+					Name:         proj.Name,
+					Description:  proj.Description,
+					StartDate:    pStart.Format("2006-01-02"),
+					EndDate:      pEnd.Format("2006-01-02"),
+					PeriodText:   pPeriodText,
+					DurationText: FormatDuration(pMonths),
+					Technologies: proj.Technologies,
+					URL:          proj.URL,
+				})
+			}
 		}
 
 		// Si el trabajo no tiene proyectos específicos, asignamos las tecnologías del trabajo a todo el período del trabajo
@@ -207,10 +211,25 @@ func ProcessCV(raw *CVRaw) *CVProcessed {
 		})
 	}
 
+	// Register tech intervals for non-visible independent projects (they still contribute to skill durations)
+	for _, proj := range raw.Projects {
+		if associatedProjects[proj.ID] || proj.VisibleWeb {
+			continue
+		}
+		pStart := proj.StartDate.Time
+		pEnd := proj.EndDate.Time
+		for _, tech := range proj.Technologies {
+			techIntervals[tech] = append(techIntervals[tech], Interval{Start: pStart, End: pEnd})
+		}
+	}
+
 	// Procesar Proyectos Independientes (solo los que NO fueron asociados a experiencias de trabajo)
 	for _, proj := range raw.Projects {
 		if associatedProjects[proj.ID] {
 			continue // Ya fue renderizado dentro de una compañía
+		}
+		if !proj.VisibleWeb {
+			continue // Non-visible independent projects are not rendered
 		}
 
 		pStart := proj.StartDate.Time

@@ -2,7 +2,8 @@
 # Los datos de contacto (email, teléfono, dirección, redes) se inyectan desde .env local.
 personal_info:
   name: "Diego Sasco"
-  title: "Arquitecto de Software & Especialista en Automatización / IA"
+  title: "Desarrollador de Software Senior"
+  about_me: "Desarrollador de Software Senior con más de 7 años de experiencia en el diseño y automatización de sistemas para el sector financiero, retail e industrial. Especializado en integración de sistemas legacy, arquitectura IoT y soluciones RPA, con competencias en backend distribuido (C#/.NET, Go, gRPC, RabbitMQ) y formación en seguridad informática. Profesional orientado a resultados, con comunicación asertiva y enfoque en la confiabilidad de sistemas críticos."
 
 skills:
   # Lenguajes
@@ -62,10 +63,6 @@ skills:
   - id: help_desk
     name: "Help Desk & Soporte Técnico"
     category: "Habilidades Funcionales"
-  - id: customer_service
-    name: "Atención al Público & Gestión de Clientes"
-    category: "Habilidades Funcionales"
-
   # Habilidades Blandas
   - id: leadership
     name: "Liderazgo de Equipos & Proyectos"
@@ -88,7 +85,7 @@ work_experience:
     role: "Desarrollador de Software & IoT (Freelance)"
     start_date: "2024-07-01"
     end_date: "present"
-    description: "Diseño y desarrollo de sistemas distribuidos, software a medida y soluciones de automatización IoT, colaborando estrechamente con técnicos y especialistas en hardware electrónico. Aplicación de metodologías avanzadas de desarrollo asistido por IA profesional."
+    description: "Diseñé e implementé sistemas distribuidos en Go y C#/.NET para automatización IoT e integración legacy, colaborando con especialistas en hardware electrónico en el prototipado de soluciones embebidas. Aplicación sistemática de metodologías de desarrollo asistido por IA para maximizar la calidad y velocidad de entrega."
     technologies:
       [
         "golang",
@@ -113,17 +110,17 @@ work_experience:
       ]
 
   - company: "Real2B"
-    role: "Analista Operacional & Control de Flujo"
+    role: "Soporte Técnico y Operaciones de TI"
     start_date: "2024-01-01"
     end_date: "2024-06-30" # Contrato corto de 6 meses
-    description: "Gestión integral de operaciones de venta de servicios, transacciones de caja, soporte técnico (Help Desk) a usuarios y atención directa al público en múltiples locales."
+    description: "Proporcioné soporte técnico (Help Desk) a usuarios en múltiples locales, diagnosticando y resolviendo incidencias de infraestructura de TI y sistemas de comunicación. Administré la continuidad operativa de sistemas transaccionales y coordiné la resolución de problemas técnicos con equipos internos."
     technologies:
       [
         "help_desk",
-        "customer_service",
+        "problem_solving",
         "teamwork",
         "assertive_communication",
-        "problem_solving",
+        "security_mindset",
       ]
     projects: []
 
@@ -131,7 +128,7 @@ work_experience:
     role: "Consultor de Normalización de Inventario"
     start_date: "2023-01-01"
     end_date: "2023-12-31"
-    description: "Liderazgo de un proyecto integral de normalización de inventarios (mayoristas y minoristas), depuración de discrepancias de stock histórico y definición de métodos de trabajo estandarizados."
+    description: "Lideré un proyecto integral de normalización de inventarios (mayoristas y minoristas), diagnosticando y depurando discrepancias de stock histórico en bases de datos SQL, y definiendo métodos de trabajo estandarizados que simplificaron los procesos de control."
     technologies: ["sql", "leadership", "problem_solving"]
     projects: ["normalizacion_inventario"]
 
@@ -139,7 +136,7 @@ work_experience:
     role: "Director & Líder de Desarrollo de Software"
     start_date: "2018-11-01"
     end_date: "2023-12-31"
-    description: "Liderazgo técnico en el diseño de soluciones de automatización de procesos de negocio (RPA), microservicios y procesamiento masivo de datos."
+    description: "Dirigí el desarrollo de soluciones de automatización de procesos financieros (RPA), microservicios y procesamiento masivo de datos, diseñando una arquitectura observable con RabbitMQ que garantizó la trazabilidad de operaciones críticas."
     technologies:
       [
         "csharp",
@@ -158,7 +155,7 @@ work_experience:
     role: "Asesor de Soporte TI y Automatización"
     start_date: "2017-03-01"
     end_date: "2023-12-31"
-    description: "Automatización de procesos de retail, soporte técnico a usuarios finales (Help Desk), mantenimiento de infraestructura de TI y sistemas de comunicación corporativos."
+    description: "Automatizé procesos de retail mediante herramientas personalizadas en C# y SQL, administrando la infraestructura de TI y sistemas de comunicación corporativos, y proporcionando soporte técnico especializado a usuarios finales en un entorno multi-sucursal."
     technologies:
       [
         "csharp",
@@ -173,12 +170,12 @@ work_experience:
     projects: ["retail_automation", "opt_administrativa"]
 
   - company: "PIXI Supermercados"
-    role: "Encargado de Operaciones"
+    role: "Supervisor de Operaciones y Logística"
     start_date: "2016-07-01"
     end_date: "2017-03-31"
-    description: "Supervisión de equipos, administración de personal, control de inventario, arqueos de caja y atención al público (resolución de conflictos y gestión de proveedores)."
+    description: "Coordiné equipos operativos y supervisé la logística de inventarios en un entorno de alta rotación, implementando controles sistemáticos de stock y optimizando los procesos de recepción de mercadería. Gestión de proveedores y resolución de conflictos operativos."
     technologies:
-      ["customer_service", "leadership", "teamwork", "assertive_communication"]
+      ["leadership", "teamwork", "assertive_communication", "problem_solving"]
     projects: []
 
 education:
@@ -204,7 +201,7 @@ education:
     degree: "Contador Público"
     start_date: "2015-03-01"
     end_date: "2016-12-15"
-    status: "1er año cursado"
+    status: "1er año cursado (formación complementaria en gestión financiera y contable)"
 
 # Diccionario Global de Proyectos
 # El pipeline los inyecta en su respectiva compañía y deja los "huérfanos" (ej: CV Pipeline) al final en Proyectos Independientes
@@ -212,27 +209,35 @@ projects:
   # Proyectos Freelance (IoT & Software a medida)
   - id: rppos_iot
     name: "RpPOS - Arquitectura IoT (Golden Wash)"
-    description: "Diseño y desarrollo de la interfaz de usuario y control de hardware (GPIO) en hardware limitado (Raspberry Pi) para Punto de Venta a medida de Golden Wash."
+    description: "Diseñé e implementé la interfaz de usuario y el control de hardware (GPIO) en Go con Fyne UI para un Punto de Venta embebido en Raspberry Pi, optimizando el rendimiento en un entorno de recursos limitados para control de maquinaria industrial."
     start_date: "2026-04-01"
     end_date: "present"
     technologies: ["golang", "fyne", "linux"]
+    visible_web: true
+    visible_pdf: true
 
   - id: proxy_getnet
     name: "Proxy Inverso Financiero"
-    description: "Implementación de un Proxy Inverso que traduce protocolos legacy SOAP a gRPC, permitiendo la comunicación eficiente con pasarelas financieras de GetNet / Transact de Santander (New Age Data)."
+    description: "Implementé un proxy inverso en C# que traduce protocolos legacy SOAP a gRPC, habilitando la comunicación eficiente con pasarelas financieras de GetNet/Santander y consolidando la integración de sistemas transaccionales."
     start_date: "2026-04-01"
     end_date: "present"
     technologies: ["csharp", "grpc", "soap"]
+    visible_web: true
+    visible_pdf: true
 
   - id: iot_hardware_automation
-    name: "Sistema de Telemetría y Automatización de Hardware (Confidencial)"
-    description: "Diseño y programación de la capa de comunicación (GPIO, protocolos seriales) y control de firmware para enlazar microcontroladores IoT con APIs distribuidas. Colaboración directa en prototipado electrónico de hardware."
+    name: "Plataforma de Monitoreo Remoto de Activos IoT"
+    description: "Diseñé y programé la plataforma de monitoreo remoto de activos IoT, implementando la capa de comunicación (GPIO, protocolos seriales) y control de firmware para enlazar microcontroladores con APIs distribuidas en Go y gRPC, habilitando el control remoto de dispositivos industriales en entornos de producción."
     start_date: "2024-07-01"
     end_date: "2026-03-31"
     technologies: ["golang", "linux", "grpc"]
+    visible_web: true
+    visible_pdf: true
 
   - id: ai_engineering_workflow
     name: "Flujo de Ingeniería Asistida por IA (SDD & TDD)"
+    visible_web: false
+    visible_pdf: true
     description: "Adopción de un flujo de trabajo para el desarrollo con IA de forma profesional. Aplicación sistemática de Spec-Driven Development (SDD), Test-Driven Development (TDD) e integración con test harnesses externos para simulación de escenarios lógicos complejos y validación de software en entornos aislados."
     start_date: "2024-07-01"
     end_date: "present"
@@ -241,6 +246,8 @@ projects:
   # Proyectos Sluckis
   - id: normalizacion_inventario
     name: "Sluckis - Normalización de Inventario"
+    visible_web: false
+    visible_pdf: true
     description: "Auditoría integral y normalización de la base de datos de stock histórico (mayorista y minorista), implementando controles sistemáticos."
     start_date: "2023-01-01"
     end_date: "2023-12-31"
@@ -249,20 +256,26 @@ projects:
   # Proyectos Bionico
   - id: framework_rpa
     name: "Framework RPA Financiero"
-    description: "Desarrollo de bots de escritorio (Windows UI Automation) y observabilidad (RabbitMQ) para automatizar la inserción de datos en sistemas contables."
+    description: "Desarrollé un framework de bots de escritorio (Windows UI Automation) en C# con observabilidad vía RabbitMQ, automatizando la inserción de datos en sistemas contables y reduciendo significativamente la intervención manual en procesos financieros críticos."
     start_date: "2018-11-01"
     end_date: "2022-12-31"
     technologies: ["csharp", "sql", "rabbitmq"]
+    visible_web: true
+    visible_pdf: true
 
   - id: extraccion_pdf
     name: "Motor de Extracción PDF"
-    description: "Desarrollo de un motor inteligente basado en coordenadas X/Y (PdfPig) sobre PDFs semi-estructurados, permitiendo procesamiento masivo de facturas."
+    description: "Construí un motor inteligente de extracción basado en coordenadas X/Y (PdfPig) sobre PDFs semi-estructurados en C#, habilitando el procesamiento masivo automatizado de facturas y estandarizando la ingesta de documentos financieros."
     start_date: "2020-06-01"
     end_date: "2021-06-30"
     technologies: ["csharp"]
+    visible_web: true
+    visible_pdf: true
 
   - id: sasco_agency_ai
     name: "Soluciones de IA Generativa"
+    visible_web: false
+    visible_pdf: true
     description: "Desarrollo de agentes y flujos de automatización integrando Modelos de Lenguaje (LLMs) para la optimización de procesos de negocio."
     start_date: "2023-01-01"
     end_date: "2023-12-31"
@@ -271,6 +284,8 @@ projects:
   # Proyectos TopBrands
   - id: retail_automation
     name: "Automatización de Inventario y Retail"
+    visible_web: false
+    visible_pdf: true
     description: "Creación de herramientas personalizadas en C# para automatizar la creación de artículos, precios, ingresos de facturas e importaciones."
     start_date: "2017-03-01"
     end_date: "2018-12-31"
@@ -278,6 +293,8 @@ projects:
 
   - id: opt_administrativa
     name: "Optimización de Flujos Administrativos"
+    visible_web: false
+    visible_pdf: true
     description: "Consultoría y mejora de procesos administrativos de control interno y auditoría interna de TI."
     start_date: "2020-01-01"
     end_date: "2023-12-31"
@@ -286,6 +303,8 @@ projects:
   # Proyecto Independiente / Personal (Se renderiza en sección Proyectos al final)
   - id: cv_pipeline
     name: "CV Pipeline CLI"
+    visible_web: false
+    visible_pdf: false
     description: "Pipeline automatizado en Go y Astro para compilar hojas de vida estructuradas calculando años de experiencia reales sin solapamientos."
     start_date: "2026-06-01"
     end_date: "present"

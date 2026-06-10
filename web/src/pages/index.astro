@@ -7,8 +7,15 @@ const googleFormUrl = import.meta.env.PUBLIC_GOOGLE_FORM_URL || "";
 
 const base = import.meta.env.BASE_URL;
 
-// Agrupar habilidades por categoría
-const skillsByCategory = cvData.skills.reduce((acc, skill) => {
+// Soft skill categories to render separately
+const softCategories = new Set(['Competencias Blandas', 'Habilidades Funcionales']);
+
+// Split skills into technical (with years) and soft (tag cloud)
+const technicalSkills = cvData.skills.filter(s => !softCategories.has(s.category));
+const softSkills = cvData.skills.filter(s => softCategories.has(s.category));
+
+// Group technical skills by category
+const techByCategory = technicalSkills.reduce((acc, skill) => {
   if (!acc[skill.category]) {
     acc[skill.category] = [];
   }
@@ -21,22 +28,47 @@ const skillsByCategory = cvData.skills.reduce((acc, skill) => {
 	<head>
 		<meta charset="utf-8" />
 		<link rel="icon" type="image/svg+xml" href={`${base}favicon.svg`} />
-		<meta name="viewport" content="width=device-width" />
+		<meta name="viewport" content="width=device-width, initial-scale=1" />
+		<meta name="theme-color" content="#0b0f19" />
 		<meta name="generator" content={Astro.generator} />
 		<title>{personalInfo.name} | {personalInfo.title}</title>
+		<meta name="description" content={`${personalInfo.name} — ${personalInfo.title}. Más de 7 años diseñando sistemas distribuidos, soluciones IoT e integración legacy para el sector financiero, retail e industrial.`} />
+		<link rel="canonical" href={new URL(base, Astro.site).href} />
+		<!-- Open Graph -->
+		<meta property="og:title" content={`${personalInfo.name} | ${personalInfo.title}`} />
+		<meta property="og:description" content={`${personalInfo.name} — ${personalInfo.title}. Más de 7 años diseñando sistemas distribuidos, soluciones IoT e integración legacy para el sector financiero, retail e industrial.`} />
+		<meta property="og:type" content="website" />
+		<meta property="og:url" content={new URL(base, Astro.site).href} />
+		<meta property="og:locale" content="es_ES" />
+		<!-- Preconnect Google Fonts -->
+		<link rel="preconnect" href="https://fonts.googleapis.com" />
+		<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+		<!-- Schema.org -->
+		<script type="application/ld+json" set:html={JSON.stringify({
+			"@context": "https://schema.org",
+			"@type": "Person",
+			"name": personalInfo.name,
+			"jobTitle": personalInfo.title,
+			"url": new URL(base, Astro.site).href,
+			"knowsAbout": [
+				"C#/.NET", "Go", "gRPC", "IoT", "RabbitMQ",
+				"integración de sistemas legacy", "automatización RPA",
+				"seguridad informática", "desarrollo de software"
+			]
+		})} />
 	</head>
 	<body>
-		<main>
-			{/* Encabezado / Hero */}
-			<header class="hero">
+		<main role="main">
+			{/* Hero */}
+			<header class="hero" role="banner">
 				<h1>{personalInfo.name}</h1>
 				<p class="subtitle">{personalInfo.title}</p>
 
-				{/* Contacto — solo Google Form, ningún dato personal */}
+				{/* Contact — Google Form only, no personal data */}
 				{googleFormUrl && (
 					<div class="contact-info">
 						<a href={googleFormUrl} target="_blank" rel="noopener noreferrer" class="contact-form-btn">
-							<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512">
+							<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" aria-label="Email">
 								<path d="M48 64C21.5 64 0 85.5 0 112c0 15.1 7.1 29.3 19.2 38.4L236.8 313.6c11.4 8.5 27 8.5 38.4 0L492.8 150.4c12.1-9.1 19.2-23.3 19.2-38.4c0-26.5-21.5-48-48-48H48zM0 176V384c0 35.3 28.7 64 64 64H448c35.3 0 64-28.7 64-64V176L294.4 339.2c-22.8 17.1-54 17.1-76.8 0L0 176z"/>
 							</svg>
 							Contacto
@@ -45,7 +77,15 @@ const skillsByCategory = cvData.skills.reduce((acc, skill) => {
 				)}
 			</header>
 
-			{/* Experiencia Laboral */}
+			{/* About Me */}
+			{personalInfo.about_me && (
+				<section class="about-me">
+					<h2>Sobre Mí</h2>
+					<p class="about-me-text">{personalInfo.about_me}</p>
+				</section>
+			)}
+
+			{/* Work Experience */}
 			<section class="section-card">
 				<h2>Experiencia Profesional</h2>
 				<div class="experience-list">
@@ -95,11 +135,36 @@ const skillsByCategory = cvData.skills.reduce((acc, skill) => {
 				</div>
 			</section>
 
-			{/* Skills / Habilidades Inferidas */}
+			{/* Independent Projects */}
+			{cvData.projects && cvData.projects.length > 0 && (
+				<section class="section-card">
+					<h2>Proyectos Destacados</h2>
+					<div class="indie-projects-grid">
+						{cvData.projects.map((proj) => (
+							<div class="indie-project-card">
+								<div class="indie-project-main">
+									<div class="indie-project-title">
+										<h3>{proj.name}</h3>
+										{proj.url && <a href={proj.url} target="_blank" rel="noopener noreferrer">Ver →</a>}
+									</div>
+									<p class="indie-project-desc">{proj.description}</p>
+								</div>
+								<div class="tech-tags">
+									{proj.technologies.map((tech) => (
+										<span class="tech-tag">{cvData.skills.find(s => s.id === tech)?.name || tech}</span>
+									))}
+								</div>
+							</div>
+						))}
+					</div>
+				</section>
+			)}
+
+			{/* Technical Skills */}
 			<section>
-				<h2>Conocimientos y Años de Experiencia</h2>
+				<h2>Conocimientos y Experiencia</h2>
 				<div class="skills-grid">
-					{Object.entries(skillsByCategory).map(([category, skills]) => (
+					{Object.entries(techByCategory).map(([category, skills]) => (
 						<div class="skill-category-card">
 							<h3 class="skill-category-title">{category}</h3>
 							<div class="skills-list">
@@ -113,9 +178,21 @@ const skillsByCategory = cvData.skills.reduce((acc, skill) => {
 						</div>
 					))}
 				</div>
+
+				{/* Soft Skills — tag cloud without years */}
+				{softSkills.length > 0 && (
+					<div class="soft-skills-section">
+						<h3>Competencias Profesionales</h3>
+						<div class="soft-skills-cloud">
+							{softSkills.map((skill) => (
+								<span class="soft-skill-tag">{skill.name}</span>
+							))}
+						</div>
+					</div>
+				)}
 			</section>
 
-			{/* Educación */}
+			{/* Education */}
 			<section class="section-card">
 				<h2>Educación</h2>
 				<div class="experience-list">
@@ -137,19 +214,27 @@ const skillsByCategory = cvData.skills.reduce((acc, skill) => {
 				</div>
 			</section>
 
-			{/* Recomendaciones / Testimonios */}
+			{/* Recommendations */}
 			{cvData.recommendations && cvData.recommendations.length > 0 && (
-				<section class="section-card">
+				<section class="section-card" role="complementary">
 					<h2>Recomendaciones</h2>
 					<div class="recommendations-grid">
 						{cvData.recommendations.map((rec) => (
 							<blockquote class="recommendation-card">
 								<p class="recommendation-text">"{rec.text}"</p>
+								<footer class="recommendation-author">
+									<cite class="author-name">Referencia profesional</cite>
+								</footer>
 							</blockquote>
 						))}
 					</div>
 				</section>
 			)}
+
+			{/* Footer */}
+			<footer class="site-footer">
+				<p>Built with <a href="https://astro.build" target="_blank" rel="noopener noreferrer">Astro</a></p>
+			</footer>
 		</main>
 	</body>
 </html>

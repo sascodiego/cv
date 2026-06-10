@@ -90,6 +90,7 @@ type Recommendation struct {
 type PersonalInfo struct {
 	Name     string `yaml:"name" json:"name"`
 	Title    string `yaml:"title" json:"title"`
+	AboutMe  string `yaml:"about_me" json:"about_me,omitempty"`
 	Email    string `yaml:"email" json:"email,omitempty"`
 	Website  string `yaml:"website" json:"website,omitempty"`
 	GitHub   string `yaml:"github" json:"github,omitempty"`
@@ -128,6 +129,8 @@ type Project struct {
 	EndDate      CVDate   `yaml:"end_date" json:"end_date"`
 	Technologies []string `yaml:"technologies" json:"technologies"`
 	URL          string   `yaml:"url" json:"url"`
+	VisibleWeb   bool     `yaml:"visible_web" json:"-"`
+	VisiblePDF   bool     `yaml:"visible_pdf" json:"-"`
 }
 
 // CVProcessed es la estructura final calculada para Astro

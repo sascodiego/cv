@@ -99,6 +99,125 @@ func TestMergeIntervals(t *testing.T) {
 	}
 }
 
+func TestAboutMePassThrough(t *testing.T) {
+	raw := &CVRaw{
+		PersonalInfo: PersonalInfo{
+			Name:    "Test",
+			Title:   "Dev",
+			AboutMe: "This is my professional summary.",
+		},
+	}
+	processed := ProcessCV(raw)
+	if processed.PersonalInfo.AboutMe != "This is my professional summary." {
+		t.Errorf("AboutMe passthrough failed: got %q", processed.PersonalInfo.AboutMe)
+	}
+}
+
+func TestAboutMeEmptyString(t *testing.T) {
+	raw := &CVRaw{
+		PersonalInfo: PersonalInfo{
+			Name:  "Test",
+			Title: "Dev",
+		},
+	}
+	processed := ProcessCV(raw)
+	if processed.PersonalInfo.AboutMe != "" {
+		t.Errorf("Empty AboutMe should produce empty string, got %q", processed.PersonalInfo.AboutMe)
+	}
+}
+
+func TestHiddenProjectFiltered(t *testing.T) {
+	skillGo := SkillRaw{ID: "golang", Name: "Go", Category: "Languages"}
+	raw := &CVRaw{
+		PersonalInfo: PersonalInfo{Name: "Test"},
+		Skills:       []SkillRaw{skillGo},
+		WorkExperience: []WorkExperience{
+			{
+				Company:      "Corp",
+				Role:         "Dev",
+				StartDate:    CVDate{Time: parseDate("2020-01-01")},
+				EndDate:      CVDate{Time: parseDate("2020-12-31")},
+				Technologies: []string{"golang"},
+				Projects:     []string{"vis-proj", "hid-proj"},
+			},
+		},
+		Projects: []Project{
+			{
+				ID:           "vis-proj",
+				Name:         "Visible Project",
+				StartDate:    CVDate{Time: parseDate("2020-01-01")},
+				EndDate:      CVDate{Time: parseDate("2020-06-30")},
+				Technologies: []string{"golang"},
+				VisibleWeb:   true,
+			},
+			{
+				ID:           "hid-proj",
+				Name:         "Hidden Project",
+				StartDate:    CVDate{Time: parseDate("2020-07-01")},
+				EndDate:      CVDate{Time: parseDate("2020-12-31")},
+				Technologies: []string{"golang"},
+			},
+		},
+	}
+	processed := ProcessCV(raw)
+
+	// Only 1 project should render (the visible one)
+	if len(processed.WorkExperience) != 1 {
+		t.Fatalf("Expected 1 work entry, got %d", len(processed.WorkExperience))
+	}
+	if len(processed.WorkExperience[0].Projects) != 1 {
+		t.Errorf("Expected 1 rendered project, got %d", len(processed.WorkExperience[0].Projects))
+	}
+	if processed.WorkExperience[0].Projects[0].Name != "Visible Project" {
+		t.Errorf("Expected 'Visible Project', got %q", processed.WorkExperience[0].Projects[0].Name)
+	}
+
+	// Skill duration should include both visible + hidden intervals (12 months total)
+	if len(processed.Skills) != 1 {
+		t.Fatalf("Expected 1 skill, got %d", len(processed.Skills))
+	}
+	if processed.Skills[0].MonthsExperience != 12 {
+		t.Errorf("Expected 12 months for golang (both projects), got %d", processed.Skills[0].MonthsExperience)
+	}
+}
+
+func TestHiddenIndependentProject(t *testing.T) {
+	skillGo := SkillRaw{ID: "golang", Name: "Go", Category: "Languages"}
+	raw := &CVRaw{
+		PersonalInfo: PersonalInfo{Name: "Test"},
+		Skills:       []SkillRaw{skillGo},
+		WorkExperience: []WorkExperience{
+			{
+				Company:      "Corp",
+				Role:         "Dev",
+				StartDate:    CVDate{Time: parseDate("2020-01-01")},
+				EndDate:      CVDate{Time: parseDate("2020-06-30")},
+				Technologies: []string{"golang"},
+			},
+		},
+		Projects: []Project{
+			{
+				ID:           "hidden-indie",
+				Name:         "Hidden Indie",
+				StartDate:    CVDate{Time: parseDate("2021-01-01")},
+				EndDate:      CVDate{Time: parseDate("2021-06-30")},
+				Technologies: []string{"golang"},
+			},
+		},
+	}
+	processed := ProcessCV(raw)
+
+	// No independent projects should render
+	if len(processed.Projects) != 0 {
+		t.Errorf("Expected 0 rendered independent projects, got %d", len(processed.Projects))
+	}
+
+	// Skill duration should include work (6 months) + hidden indie (6 months) = 12 months
+	if len(processed.Skills) != 1 {
+		t.Fatalf("Expected 1 skill, got %d", len(processed.Skills))
+	}
+}
+
 func TestProcessCV(t *testing.T) {
 	// Crear un caso ficticio donde la tecnología "csharp" se repite:
 	// Trabajo 1: 2019-01-01 a 2019-12-31 (12 meses) -> usa csharp

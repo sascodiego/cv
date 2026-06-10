@@ -1,0 +1,30 @@
+{
+	"subagents": {
+		"agentOverrides": {
+			"context-builder": {
+				"model": "zai/glm-5-turbo"
+			},
+			"delegate": {
+				"model": "zai/glm-5-turbo"
+			},
+			"oracle": {
+				"model": "zai/glm-5.1"
+			},
+			"planner": {
+				"model": "zai/glm-5.1"
+			},
+			"researcher": {
+				"model": "zai/glm-5-turbo"
+			},
+			"reviewer": {
+				"model": "zai/glm-5.1"
+			},
+			"scout": {
+				"model": "minimax/MiniMax-M3"
+			},
+			"worker": {
+				"model": "zai/glm-5.1"
+			}
+		}
+	}
+}

@@ -1,0 +1,686 @@
+@import url("https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&family=Outfit:wght@100..900&display=swap");
+
+:root {
+	/* Paleta de colores Dark Premium (Web) */
+	--bg-color: #0b0f19;
+	--card-bg: rgba(22, 30, 49, 0.6);
+	--card-border: rgba(255, 255, 255, 0.08);
+
+	--primary-color: #38bdf8; /* Sky Blue */
+	--primary-gradient: linear-gradient(135deg, #38bdf8, #818cf8);
+	--text-main: #f1f5f9; /* Slate 100 */
+	--text-muted: #94a3b8; /* Slate 400 */
+	--text-accent: #818cf8; /* Indigo 400 */
+
+	--shadow-sm: 0 2px 8px -2px rgba(0, 0, 0, 0.5);
+	--shadow-md: 0 8px 30px -10px rgba(0, 0, 0, 0.7);
+
+	--font-title: "Outfit", sans-serif;
+	--font-body: "Inter", sans-serif;
+
+	--container-max-width: 900px;
+	--border-radius: 12px;
+}
+
+/* Reset básico */
+*,
+*::before,
+*::after {
+	box-sizing: border-box;
+	margin: 0;
+	padding: 0;
+}
+
+body {
+	background-color: var(--bg-color);
+	color: var(--text-main);
+	font-family: var(--font-body);
+	line-height: 1.6;
+	-webkit-font-smoothing: antialiased;
+	-moz-osx-font-smoothing: grayscale;
+	padding-block: 4rem;
+	padding-inline: 1.5rem;
+}
+
+/* Contenedor principal */
+main {
+	max-inline-size: var(--container-max-width);
+	margin-inline: auto;
+	display: flex;
+	flex-direction: column;
+	gap: 3rem;
+}
+
+/* Encabezado / Hero Section */
+.hero {
+	text-align: center;
+	padding-block-end: 2rem;
+	border-block-end: 1px solid var(--card-border);
+}
+
+.hero h1 {
+	font-family: var(--font-title);
+	font-size: clamp(2.5rem, 5vw, 3.5rem);
+	font-weight: 800;
+	line-height: 1.1;
+	background: var(--primary-gradient);
+	-webkit-background-clip: text;
+	-webkit-text-fill-color: transparent;
+	margin-block-end: 0.5rem;
+}
+
+.hero .subtitle {
+	font-family: var(--font-title);
+	font-size: clamp(1.2rem, 2.5vw, 1.5rem);
+	color: var(--primary-color);
+	font-weight: 500;
+	margin-block-end: 1.5rem;
+}
+
+.contact-info {
+	display: flex;
+	flex-wrap: wrap;
+	justify-content: center;
+	gap: 1.5rem;
+	font-size: 0.9rem;
+}
+
+.contact-item {
+	display: flex;
+	align-items: center;
+	gap: 0.5rem;
+	color: var(--text-muted);
+	text-decoration: none;
+	transition: color 0.2s ease;
+}
+
+.contact-item:hover {
+	color: var(--primary-color);
+}
+
+.contact-item svg {
+	inline-size: 16px;
+	block-size: 16px;
+	fill: currentColor;
+}
+
+/* Contact Form Button */
+.contact-form-btn {
+	display: inline-flex;
+	align-items: center;
+	gap: 0.5rem;
+	background: var(--primary-gradient);
+	color: var(--bg-color);
+	font-family: var(--font-title);
+	font-weight: 700;
+	font-size: 1rem;
+	padding: 0.75rem 2rem;
+	border-radius: var(--border-radius);
+	text-decoration: none;
+	transition:
+		transform 0.2s ease,
+		box-shadow 0.2s ease;
+	margin-block-start: 1rem;
+}
+
+.contact-form-btn:hover {
+	transform: translateY(-2px);
+	box-shadow: var(--shadow-md);
+}
+
+.contact-form-btn svg {
+	inline-size: 18px;
+	block-size: 18px;
+	fill: currentColor;
+}
+
+/* Secciones genéricas */
+section {
+	display: flex;
+	flex-direction: column;
+	gap: 1.5rem;
+}
+
+section h2 {
+	font-family: var(--font-title);
+	font-size: 1.8rem;
+	font-weight: 700;
+	color: var(--text-main);
+	border-inline-start: 4px solid var(--primary-color);
+	padding-inline-start: 0.75rem;
+	line-height: 1.2;
+}
+
+/* Tarjetas y Contenedores */
+.section-card {
+	background: var(--card-bg);
+	border: 1px solid var(--card-border);
+	border-radius: var(--border-radius);
+	padding: 2rem;
+	box-shadow: var(--shadow-sm);
+	backdrop-filter: blur(10px);
+}
+
+/* Experiencia Laboral */
+.experience-list {
+	display: flex;
+	flex-direction: column;
+	gap: 2.5rem;
+}
+
+.experience-item {
+	display: flex;
+	flex-direction: column;
+	gap: 0.75rem;
+}
+
+.experience-header {
+	display: flex;
+	justify-content: space-between;
+	align-items: flex-start;
+	flex-wrap: wrap;
+	gap: 0.5rem;
+}
+
+.company-role {
+	font-size: 1.15rem;
+	font-weight: 700;
+	font-family: var(--font-title);
+}
+
+.company-name {
+	color: var(--primary-color);
+}
+
+.role-name {
+	color: var(--text-main);
+}
+
+.date-duration {
+	text-align: right;
+	font-size: 0.9rem;
+}
+
+.date-period {
+	font-weight: 600;
+	color: var(--text-main);
+}
+
+.duration-tag {
+	display: inline-block;
+	font-size: 0.75rem;
+	background: rgba(56, 189, 248, 0.1);
+	color: var(--primary-color);
+	padding: 0.1rem 0.5rem;
+	border-radius: 4px;
+	margin-block-start: 0.25rem;
+}
+
+.experience-description {
+	color: var(--text-muted);
+	font-size: 0.95rem;
+}
+
+/* Sub-proyectos en experiencia laboral */
+.internal-projects {
+	margin-block-start: 0.5rem;
+	padding-inline-start: 1.25rem;
+	border-inline-start: 2px dashed var(--card-border);
+	display: flex;
+	flex-direction: column;
+	gap: 1.25rem;
+}
+
+.project-item {
+	display: flex;
+	flex-direction: column;
+	gap: 0.25rem;
+}
+
+.project-header {
+	display: flex;
+	justify-content: space-between;
+	align-items: baseline;
+	flex-wrap: wrap;
+	gap: 0.5rem;
+}
+
+.project-name {
+	font-weight: 600;
+	font-size: 0.95rem;
+	color: var(--text-main);
+}
+
+.project-duration {
+	font-size: 0.8rem;
+	color: var(--text-muted);
+}
+
+.project-description {
+	font-size: 0.85rem;
+	color: var(--text-muted);
+}
+
+.tech-tags {
+	display: flex;
+	flex-wrap: wrap;
+	gap: 0.5rem;
+	margin-block-start: 0.4rem;
+}
+
+.tech-tag {
+	font-size: 0.75rem;
+	background: rgba(255, 255, 255, 0.05);
+	border: 1px solid var(--card-border);
+	color: var(--text-muted);
+	padding: 0.15rem 0.5rem;
+	border-radius: 4px;
+}
+
+/* Skills Section */
+.skills-grid {
+	display: grid;
+	grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+	gap: 1.5rem;
+}
+
+.skill-category-card {
+	background: var(--card-bg);
+	border: 1px solid var(--card-border);
+	border-radius: var(--border-radius);
+	padding: 1.5rem;
+}
+
+.skill-category-title {
+	font-family: var(--font-title);
+	font-size: 1.1rem;
+	font-weight: 700;
+	color: var(--primary-color);
+	margin-block-end: 1rem;
+	border-block-end: 1px solid var(--card-border);
+	padding-block-end: 0.5rem;
+}
+
+.skills-list {
+	display: flex;
+	flex-direction: column;
+	gap: 0.75rem;
+}
+
+.skill-item {
+	display: flex;
+	justify-content: space-between;
+	align-items: center;
+	font-size: 0.9rem;
+}
+
+.skill-name {
+	font-weight: 500;
+}
+
+.skill-experience {
+	font-size: 0.8rem;
+	color: var(--text-muted);
+	background: rgba(255, 255, 255, 0.04);
+	padding: 0.1rem 0.4rem;
+	border-radius: 4px;
+}
+
+/* Proyectos Independientes */
+.indie-projects-grid {
+	display: grid;
+	grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+	gap: 1.5rem;
+}
+
+.indie-project-card {
+	background: var(--card-bg);
+	border: 1px solid var(--card-border);
+	border-radius: var(--border-radius);
+	padding: 1.5rem;
+	display: flex;
+	flex-direction: column;
+	justify-content: space-between;
+	gap: 1rem;
+	transition:
+		transform 0.2s ease,
+		border-color 0.2s ease;
+}
+
+.indie-project-card:hover {
+	transform: translateY(-2px);
+	border-color: rgba(56, 189, 248, 0.3);
+}
+
+.indie-project-main {
+	display: flex;
+	flex-direction: column;
+	gap: 0.5rem;
+}
+
+.indie-project-title {
+	display: flex;
+	justify-content: space-between;
+	align-items: baseline;
+}
+
+.indie-project-title h3 {
+	font-family: var(--font-title);
+	font-size: 1.1rem;
+	font-weight: 700;
+	color: var(--text-main);
+}
+
+.indie-project-title a {
+	color: var(--primary-color);
+	text-decoration: none;
+	font-size: 0.8rem;
+}
+
+.indie-project-title a:hover {
+	text-decoration: underline;
+}
+
+.indie-project-desc {
+	font-size: 0.85rem;
+	color: var(--text-muted);
+}
+
+/* Nota Privada PDF */
+.pdf-note {
+	font-size: 0.8rem;
+	color: var(--text-muted);
+	text-align: center;
+	margin-block-start: 1rem;
+	font-style: italic;
+}
+
+/* Recomendaciones y Testimonios */
+.recommendations-grid {
+	display: grid;
+	grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+	gap: 1.5rem;
+}
+
+.recommendation-card {
+	background: var(--card-bg);
+	border: 1px solid var(--card-border);
+	border-radius: var(--border-radius);
+	padding: 1.5rem;
+	display: flex;
+	flex-direction: column;
+	justify-content: space-between;
+	gap: 1.25rem;
+	box-shadow: var(--shadow-sm);
+	position: relative;
+}
+
+.recommendation-text {
+	font-size: 0.9rem;
+	font-style: italic;
+	color: var(--text-main);
+	line-height: 1.5;
+}
+
+.recommendation-author {
+	display: flex;
+	flex-direction: column;
+	gap: 0.15rem;
+	border-block-start: 1px solid var(--card-border);
+	padding-block-start: 0.75rem;
+}
+
+.author-name {
+	font-family: var(--font-title);
+	font-weight: 700;
+	font-size: 0.9rem;
+	color: var(--primary-color);
+	font-style: normal;
+}
+
+.author-role {
+	font-size: 0.8rem;
+	color: var(--text-main);
+	font-weight: 500;
+}
+
+.author-relation {
+	font-size: 0.75rem;
+	color: var(--text-muted);
+}
+
+/* ==========================================
+   HOJA DE ESTILOS PARA IMPRESIÓN (PDF)
+   ========================================== */
+@media print {
+	:root {
+		/* Mapeamos a Light Mode de alta legibilidad para impresión */
+		--bg-color: #ffffff;
+		--card-bg: transparent;
+		--card-border: #e2e8f0;
+
+		--primary-color: #0f172a; /* Slate 900 */
+		--primary-gradient: none;
+		--text-main: #0f172a;
+		--text-muted: #475569; /* Slate 600 */
+		--text-accent: #334155;
+
+		--shadow-sm: none;
+		--shadow-md: none;
+
+		--border-radius: 0;
+	}
+
+	body {
+		background-color: #ffffff;
+		color: #0f172a;
+		padding-block: 0;
+		padding-inline: 0;
+		font-size: 10pt; /* Optimizado para lectura impresa */
+		line-height: 1.4;
+	}
+
+	main {
+		gap: 1.5rem;
+	}
+
+	.hero {
+		padding-block-end: 1rem;
+		border-block-end: 2px solid #0f172a;
+	}
+
+	.hero h1 {
+		-webkit-text-fill-color: initial;
+		background: none;
+		color: #0f172a;
+		font-size: 26pt;
+	}
+
+	.hero .subtitle {
+		font-size: 14pt;
+		color: #334155;
+		margin-block-end: 0.5rem;
+	}
+
+	.contact-info {
+		gap: 1rem;
+	}
+
+	.contact-item {
+		color: #334155;
+	}
+
+	section {
+		gap: 0.75rem;
+		page-break-inside: avoid; /* Evita que las secciones se corten por la mitad */
+	}
+
+	section h2 {
+		font-size: 14pt;
+		border-inline-start: 3px solid #0f172a;
+		padding-inline-start: 0.5rem;
+	}
+
+	.section-card {
+		border: none;
+		padding: 0;
+		box-shadow: none;
+		backdrop-filter: none;
+	}
+
+	.experience-list {
+		gap: 1.5rem;
+	}
+
+	.experience-item {
+		gap: 0.4rem;
+		page-break-inside: avoid;
+	}
+
+	.company-role {
+		font-size: 11pt;
+	}
+
+	.company-name {
+		color: #0f172a;
+	}
+
+	.date-duration {
+		font-size: 9pt;
+	}
+
+	.duration-tag {
+		background: none;
+		border: 1px solid #cbd5e1;
+		color: #475569;
+		padding: 0.05rem 0.3rem;
+	}
+
+	.experience-description {
+		font-size: 9.5pt;
+	}
+
+	.internal-projects {
+		margin-block-start: 0.25rem;
+		gap: 0.75rem;
+		border-inline-start: 1px solid #e2e8f0;
+	}
+
+	.project-item {
+		page-break-inside: avoid;
+	}
+
+	.project-name {
+		font-size: 9.5pt;
+	}
+
+	.tech-tag {
+		background: none;
+		border: 1px solid #cbd5e1;
+		color: #475569;
+	}
+
+	.skills-grid {
+		grid-template-columns: repeat(3, 1fr);
+		gap: 1rem;
+	}
+
+	.skill-category-card {
+		border: none;
+		padding: 0;
+	}
+
+	.skill-category-title {
+		font-size: 10.5pt;
+		margin-block-end: 0.5rem;
+		color: #0f172a;
+		border-block-end: 1px solid #0f172a;
+	}
+
+	.skills-list {
+		gap: 0.4rem;
+	}
+
+	.skill-item {
+		font-size: 9pt;
+	}
+
+	.indie-projects-grid {
+		grid-template-columns: repeat(2, 1fr);
+		gap: 1rem;
+	}
+
+	.indie-project-card {
+		border: 1px solid #e2e8f0;
+		padding: 1rem;
+		page-break-inside: avoid;
+		box-shadow: none;
+		transform: none !important;
+	}
+
+	/* Ocultamos links innecesarios o los formateamos */
+	.indie-project-title a {
+		color: #0f172a;
+	}
+
+	/* La nota de privacidad debe estar visible y centrada al pie */
+	.pdf-note {
+		font-size: 8pt;
+		margin-block-start: 2rem;
+		border-block-start: 1px solid #e2e8f0;
+		padding-block-start: 0.5rem;
+	}
+
+	/* Estilos compactos para recomendaciones en impresión */
+	.recommendations-grid {
+		grid-template-columns: repeat(2, 1fr);
+		gap: 1rem;
+	}
+
+	.recommendation-card {
+		border: 1px solid #e2e8f0;
+		padding: 0.75rem;
+		page-break-inside: avoid;
+		box-shadow: none;
+		background: none;
+		gap: 0.5rem;
+		display: flex;
+		flex-direction: column;
+		justify-content: space-between;
+	}
+
+	.recommendation-text {
+		font-size: 8.5pt;
+		color: #334155;
+		line-height: 1.4;
+	}
+
+	.recommendation-author {
+		border-block-start: 1px solid #e2e8f0;
+		padding-block-start: 0.4rem;
+		display: flex;
+		flex-direction: column;
+		gap: 0.1rem;
+	}
+
+	.author-name {
+		font-size: 8.5pt;
+		color: #0f172a;
+		font-style: normal;
+	}
+
+	.author-role {
+		font-size: 7.5pt;
+		color: #475569;
+	}
+
+	.author-relation {
+		font-size: 7pt;
+		color: #64748b;
+	}
+
+	/* Hide contact button in PDF */
+	.contact-form-btn {
+		display: none;
+	}
+}

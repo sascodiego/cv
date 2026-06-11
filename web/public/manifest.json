@@ -1,0 +1,16 @@
+{
+  "name": "Diego Sasco — CV",
+  "short_name": "DS CV",
+  "description": "Curriculum vitae de Diego Sasco, Software Architect",
+  "start_url": "/cv/",
+  "display": "standalone",
+  "background_color": "#09090b",
+  "theme_color": "#09090b",
+  "icons": [
+    {
+      "src": "favicon.svg",
+      "sizes": "any",
+      "type": "image/svg+xml"
+    }
+  ]
+}

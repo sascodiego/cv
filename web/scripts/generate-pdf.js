@@ -46,9 +46,9 @@ const privateData = {
  */
 async function injectPrivateData(page) {
 	await page.evaluate((data) => {
-		// Update the hero name if provided
+		// Update the PDF header name if provided
 		if (data.name) {
-			const h1 = document.querySelector(".hero h1");
+			const h1 = document.querySelector(".cv-header h1");
 			if (h1) h1.textContent = data.name;
 		}
 
@@ -180,7 +180,7 @@ async function main() {
 	});
 
 	// Health-check: poll until the server responds
-	const baseUrl = "http://localhost:4321/cv-pipeline/";
+	const baseUrl = "http://localhost:4321/cv-pipeline/cv-pdf";
 	const maxRetries = 15;
 	const retryDelay = 500;
 	let serverReady = false;
@@ -227,7 +227,7 @@ async function main() {
 				left: "15mm",
 				right: "15mm",
 			},
-			printBackground: true,
+			printBackground: false,
 		});
 
 		console.log(`✅ PDF generado con éxito en: ${pdfPath}`);

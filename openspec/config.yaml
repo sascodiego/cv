@@ -67,18 +67,17 @@ phases:
 
 # Change context for active SDD session
 active_change:
-  id: cv-web-optimization
-  title: "CV Web Optimization — Diagnostic Recommendations Implementation"
+  id: cv-pdf-harvard
+  title: "Harvard-Style CV PDF Generator"
   source_docs:
-    - docs/diagnostico-cv-web.md
-    - docs/informe.md
+    - openspec/proposals/cv-pdf-harvard.md
   scope:
-    - Content restructuring (CAR/CCCR framework, About Me section, project curation)
-    - ATS optimization (single-column print layout, margins, fonts)
-    - SEO/discoverability (meta tags, Open Graph, Schema.org)
-    - Accessibility improvements (ARIA, focus styles, alt text)
-    - Bridge job reframing (Real2B as Help Desk, PIXI as Operations — keep but reframe with technical signal)
-  review_budget: 400 # changed lines per PR
+    - New dedicated Astro template for PDF rendering (cv-pdf.astro)
+    - Harvard GSAS/FAS standards: serif, 10-12pt, equal margins, white background
+    - ATS-friendly single-column layout with action-verb bullets
+    - Modify generate-pdf.js to navigate to the new template
+    - Private data injection from .env (contact info, recommenders)
+  review_budget: 800 # changed lines per PR
 
 # Directories managed by OpenSpec (created on demand)
 directories:

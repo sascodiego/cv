@@ -16,6 +16,7 @@
     "astro": "^6.4.5"
   },
   "devDependencies": {
+    "@astrojs/sitemap": "^3.7.3",
     "dotenv": "^17.4.2",
     "playwright": "^1.60.0",
     "puppeteer": "^25.1.0"

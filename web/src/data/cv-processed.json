@@ -2,13 +2,13 @@
   "personal_info": {
     "name": "Diego Sasco",
     "title": "Desarrollador de Software Senior",
-    "about_me": "Desarrollador de Software Senior con más de 7 años de experiencia en el diseño y automatización de sistemas para el sector financiero, retail e industrial. Especializado en integración de sistemas legacy, arquitectura IoT y soluciones RPA, con competencias en backend distribuido (C#/.NET, Go, gRPC, RabbitMQ) y formación en seguridad informática. Profesional orientado a resultados, con comunicación asertiva y enfoque en la confiabilidad de sistemas críticos."
+    "about_me": "Soy desarrollador de software con más de 7 años de experiencia, especializado en construir soluciones backend (C#/.NET, Go) y herramientas de automatización para los sectores retail y servicios. Mi experiencia fuerte está en la integración de sistemas, la integracion de pasarelas de pago y la automatización de procesos administrativos críticos mediante software de escritorio y arquitecturas distribuidas.\n\nDe forma complementaria, desarrollo soluciones IoT y software embebido en Linux (Raspberry Pi, ESP32) para el control de dispositivos en puntos de venta y entornos comerciales. Diseño e implemento herramientas pensando siempre en la confiabilidad, la seguridad por diseño y la estabilidad operativa de los sistemas en producción."
   },
   "skills": [
     {
       "id": "csharp",
       "name": "C# / .NET",
-      "category": "Languages \u0026 Frameworks",
+      "category": "Languages & Frameworks",
       "months_experience": 85,
       "years_experience": 7.083333333333333,
       "experience_text": "7 años y 1 mes"
@@ -16,7 +16,7 @@
     {
       "id": "golang",
       "name": "Go",
-      "category": "Languages \u0026 Frameworks",
+      "category": "Languages & Frameworks",
       "months_experience": 24,
       "years_experience": 2,
       "experience_text": "2 años"
@@ -24,7 +24,7 @@
     {
       "id": "python",
       "name": "Python",
-      "category": "Languages \u0026 Frameworks",
+      "category": "Languages & Frameworks",
       "months_experience": 36,
       "years_experience": 3,
       "experience_text": "3 años"
@@ -32,7 +32,7 @@
     {
       "id": "javascript",
       "name": "JavaScript / TypeScript",
-      "category": "Languages \u0026 Frameworks",
+      "category": "Languages & Frameworks",
       "months_experience": 12,
       "years_experience": 1,
       "experience_text": "1 año"
@@ -40,7 +40,7 @@
     {
       "id": "sql",
       "name": "SQL (PostgreSQL / SQL Server)",
-      "category": "Databases \u0026 Obs",
+      "category": "Databases & Obs",
       "months_experience": 82,
       "years_experience": 6.833333333333333,
       "experience_text": "6 años y 10 meses"
@@ -48,7 +48,7 @@
     {
       "id": "grpc",
       "name": "gRPC",
-      "category": "Architecture \u0026 Protocols",
+      "category": "Architecture & Protocols",
       "months_experience": 24,
       "years_experience": 2,
       "experience_text": "2 años"
@@ -56,7 +56,7 @@
     {
       "id": "rabbitmq",
       "name": "RabbitMQ",
-      "category": "Architecture \u0026 Protocols",
+      "category": "Architecture & Protocols",
       "months_experience": 50,
       "years_experience": 4.166666666666667,
       "experience_text": "4 años y 2 meses"
@@ -64,7 +64,7 @@
     {
       "id": "soap",
       "name": "SOAP / XML",
-      "category": "Architecture \u0026 Protocols",
+      "category": "Architecture & Protocols",
       "months_experience": 3,
       "years_experience": 0.25,
       "experience_text": "3 meses"
@@ -72,7 +72,7 @@
     {
       "id": "docker",
       "name": "Docker",
-      "category": "Infrastructure \u0026 DevOps",
+      "category": "Infrastructure & DevOps",
       "months_experience": 24,
       "years_experience": 2,
       "experience_text": "2 años"
@@ -80,7 +80,7 @@
     {
       "id": "linux",
       "name": "Linux (Ubuntu/Debian)",
-      "category": "Infrastructure \u0026 DevOps",
+      "category": "Infrastructure & DevOps",
       "months_experience": 106,
       "years_experience": 8.833333333333334,
       "experience_text": "8 años y 10 meses"
@@ -88,15 +88,15 @@
     {
       "id": "playwright",
       "name": "Playwright / UI Automation",
-      "category": "Automation \u0026 QA",
+      "category": "Automation & QA",
       "months_experience": 62,
       "years_experience": 5.166666666666667,
       "experience_text": "5 años y 2 meses"
     },
     {
       "id": "generative_ai",
-      "name": "IA Generativa (LLMs \u0026 Agents)",
-      "category": "Automation \u0026 QA",
+      "name": "IA Generativa (LLMs & Agents)",
+      "category": "Automation & QA",
       "months_experience": 36,
       "years_experience": 3,
       "experience_text": "3 años"
@@ -104,7 +104,7 @@
     {
       "id": "fyne",
       "name": "Fyne UI (Go Desktop)",
-      "category": "Automation \u0026 QA",
+      "category": "Automation & QA",
       "months_experience": 3,
       "years_experience": 0.25,
       "experience_text": "3 meses"
@@ -112,7 +112,7 @@
     {
       "id": "astro",
       "name": "Astro",
-      "category": "Automation \u0026 QA",
+      "category": "Automation & QA",
       "months_experience": 1,
       "years_experience": 0.08333333333333333,
       "experience_text": "1 mes"
@@ -120,14 +120,14 @@
     {
       "id": "ai_assisted_dev",
       "name": "AI-Assisted Engineering (SDD, TDD, Test Harnesses)",
-      "category": "Metodologías \u0026 Prácticas",
+      "category": "Metodologías & Prácticas",
       "months_experience": 24,
       "years_experience": 2,
       "experience_text": "2 años"
     },
     {
       "id": "help_desk",
-      "name": "Help Desk \u0026 Soporte Técnico",
+      "name": "Help Desk & Soporte Técnico",
       "category": "Habilidades Funcionales",
       "months_experience": 88,
       "years_experience": 7.333333333333333,
@@ -135,7 +135,7 @@
     },
     {
       "id": "leadership",
-      "name": "Liderazgo de Equipos \u0026 Proyectos",
+      "name": "Liderazgo de Equipos & Proyectos",
       "category": "Competencias Blandas",
       "months_experience": 95,
       "years_experience": 7.916666666666667,
@@ -143,7 +143,7 @@
     },
     {
       "id": "teamwork",
-      "name": "Trabajo en Equipo \u0026 Colaboración",
+      "name": "Trabajo en Equipo & Colaboración",
       "category": "Competencias Blandas",
       "months_experience": 120,
       "years_experience": 10,
@@ -151,7 +151,7 @@
     },
     {
       "id": "assertive_communication",
-      "name": "Comunicación Asertiva \u0026 Relacionamiento",
+      "name": "Comunicación Asertiva & Relacionamiento",
       "category": "Competencias Blandas",
       "months_experience": 120,
       "years_experience": 10,
@@ -159,7 +159,7 @@
     },
     {
       "id": "problem_solving",
-      "name": "Resolución de Problemas \u0026 Proactividad",
+      "name": "Resolución de Problemas & Proactividad",
       "category": "Competencias Blandas",
       "months_experience": 120,
       "years_experience": 10,
@@ -167,7 +167,7 @@
     },
     {
       "id": "security_mindset",
-      "name": "Cultura de Seguridad \u0026 Confiabilidad",
+      "name": "Cultura de Seguridad & Confiabilidad",
       "category": "Competencias Blandas",
       "months_experience": 88,
       "years_experience": 7.333333333333333,
@@ -176,8 +176,8 @@
   ],
   "work_experience": [
     {
-      "company": "Desarrollo Independiente \u0026 Consultoría",
-      "role": "Desarrollador de Software \u0026 IoT (Freelance)",
+      "company": "Desarrollo Independiente & Consultoría",
+      "role": "Desarrollador de Software & IoT (Freelance)",
       "start_date": "2024-07-01",
       "end_date": "2026-06-10",
       "duration_text": "2 años",
@@ -199,7 +199,7 @@
       "projects": [
         {
           "name": "RpPOS - Arquitectura IoT (Golden Wash)",
-          "description": "Diseñé e implementé la interfaz de usuario y el control de hardware (GPIO) en Go con Fyne UI para un Punto de Venta embebido en Raspberry Pi, optimizando el rendimiento en un entorno de recursos limitados para control de maquinaria industrial.",
+          "description": "Diseñé e implementé la interfaz de usuario y el control de hardware (GPIO) en Go con Fyne UI para un Punto de Venta embebido en Raspberry Pi, optimizando el rendimiento en un entorno de recursos limitados para operaciones comerciales y control de dispositivos en retail.",
           "start_date": "2026-04-01",
           "end_date": "2026-06-10",
           "period_text": "Abr 2026 - Presente",
@@ -275,7 +275,7 @@
     },
     {
       "company": "Bionico / Figital Tech",
-      "role": "Director \u0026 Líder de Desarrollo de Software",
+      "role": "Director & Líder de Desarrollo de Software",
       "start_date": "2018-11-01",
       "end_date": "2023-12-31",
       "duration_text": "5 años y 2 meses",
@@ -395,21 +395,21 @@
   "projects": [],
   "recommendations": [
     {
-      "author": "\u003cRECOMMENDER_1\u003e",
-      "role": "\u003cROLE_1\u003e",
-      "relation": "\u003cRELATION_1\u003e",
+      "author": "<RECOMMENDER_1>",
+      "role": "<ROLE_1>",
+      "relation": "<RELATION_1>",
       "text": "He tenido el gusto de trabajar con Diego, es un excelente compañero como profesional."
     },
     {
-      "author": "\u003cRECOMMENDER_2\u003e",
-      "role": "\u003cROLE_2\u003e",
-      "relation": "\u003cRELATION_2\u003e",
+      "author": "<RECOMMENDER_2>",
+      "role": "<ROLE_2>",
+      "relation": "<RELATION_2>",
       "text": "Conocí a Diego trabajando en Conexo Cowork, compartiendo espacios libres de trabajo. Diego es una persona que genera buen clima laboral, asertivo en la comunicación, que permanentemente muestra su interés en temas de seguridad compartiendo conocimiento en el día a día."
     },
     {
-      "author": "\u003cRECOMMENDER_3\u003e",
-      "role": "\u003cROLE_3\u003e",
-      "relation": "\u003cRELATION_3\u003e",
+      "author": "<RECOMMENDER_3>",
+      "role": "<ROLE_3>",
+      "relation": "<RELATION_3>",
       "text": "Excelente profesional, dejamos en sus manos la seguridad de la empresa y ha sido un éxito."
     }
   ]

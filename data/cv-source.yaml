@@ -3,7 +3,7 @@
 personal_info:
   name: "Diego Sasco"
   title: "Desarrollador de Software Senior"
-  about_me: "Desarrollador de Software Senior con más de 7 años de experiencia en el diseño y automatización de sistemas para el sector financiero, retail e industrial. Especializado en integración de sistemas legacy, arquitectura IoT y soluciones RPA, con competencias en backend distribuido (C#/.NET, Go, gRPC, RabbitMQ) y formación en seguridad informática. Profesional orientado a resultados, con comunicación asertiva y enfoque en la confiabilidad de sistemas críticos."
+  about_me: "Soy desarrollador de software con más de 7 años de experiencia, especializado en construir soluciones backend (C#/.NET, Go) y herramientas de automatización para los sectores retail y servicios. Mi experiencia fuerte está en la integración de sistemas, la integracion de pasarelas de pago y la automatización de procesos administrativos críticos mediante software de escritorio y arquitecturas distribuidas.\n\nDe forma complementaria, desarrollo soluciones IoT y software embebido en Linux (Raspberry Pi, ESP32) para el control de dispositivos en puntos de venta y entornos comerciales. Diseño e implemento herramientas pensando siempre en la confiabilidad, la seguridad por diseño y la estabilidad operativa de los sistemas en producción."
 
 skills:
   # Lenguajes
@@ -209,7 +209,7 @@ projects:
   # Proyectos Freelance (IoT & Software a medida)
   - id: rppos_iot
     name: "RpPOS - Arquitectura IoT (Golden Wash)"
-    description: "Diseñé e implementé la interfaz de usuario y el control de hardware (GPIO) en Go con Fyne UI para un Punto de Venta embebido en Raspberry Pi, optimizando el rendimiento en un entorno de recursos limitados para control de maquinaria industrial."
+    description: "Diseñé e implementé la interfaz de usuario y el control de hardware (GPIO) en Go con Fyne UI para un Punto de Venta embebido en Raspberry Pi, optimizando el rendimiento en un entorno de recursos limitados para operaciones comerciales y control de dispositivos en retail."
     start_date: "2026-04-01"
     end_date: "present"
     technologies: ["golang", "fyne", "linux"]

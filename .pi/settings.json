@@ -2,29 +2,28 @@
 	"subagents": {
 		"agentOverrides": {
 			"context-builder": {
-				"model": "inherit"
+				"model": "zai/glm-4.7"
 			},
 			"delegate": {
-				"model": "inherit"
+				"model": "zai/glm-4.7"
 			},
 			"oracle": {
-				"model": "inherit"
+				"model": "zai/glm-4.7"
 			},
 			"planner": {
-				"model": "openai-codex/gpt-5.3-codex",
-				"thinking": "xhigh"
+				"model": "zai/glm-4.7"
 			},
 			"researcher": {
-				"model": "inherit"
+				"model": "zai/glm-4.7"
 			},
 			"reviewer": {
-				"model": "inherit"
+				"model": "zai/glm-4.7"
 			},
 			"scout": {
-				"model": "inherit"
+				"model": "zai/glm-4.7"
 			},
 			"worker": {
-				"model": "inherit"
+				"model": "zai/glm-4.7"
 			}
 		}
 	}

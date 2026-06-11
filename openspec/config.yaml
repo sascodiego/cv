@@ -1,0 +1,90 @@
+# OpenSpec Configuration — cv-pipeline
+# Initialized: 2026-06-10
+# Project: Single-source CV system (Astro + Go pipeline)
+
+project:
+  name: cv-pipeline
+  type: web-cv-generator
+  description: >
+    Single-source-of-truth CV system for Diego Sasco.
+    One YAML file feeds a public web CV (GitHub Pages) and a local PDF
+    with private data. Built with Astro 6.4 (frontend) and Go 1.26
+    (data pipeline).
+  language: en # technical artifacts in English; user-facing conversation in Spanish
+  root: /src/cv-pipeline
+
+stack:
+  frontend:
+    framework: Astro 6.4
+    language: TypeScript
+    styling: CSS custom properties (dark premium theme + print stylesheet)
+    package_manager: pnpm 10+
+    node_version: ">=22.12"
+  pipeline:
+    language: Go 1.26
+    dependencies: "gopkg.in/yaml.v3"
+    architecture: CLI tool — YAML → processed JSON with interval merging
+  pdf:
+    tool: Puppeteer (headless Chrome)
+    trigger: pnpm export-pdf (local-only, injects private data from .env)
+  deployment:
+    platform: GitHub Pages
+    ci: GitHub Actions (.github/workflows/deploy.yml)
+
+testing:
+  # Go pipeline has full test support; web layer has no automated tests yet.
+  go:
+    command: "cd /src/cv-pipeline/pipeline && go test ./..."
+    coverage_command: "cd /src/cv-pipeline/pipeline && go test -cover ./..."
+    framework: stdlib testing
+    test_file: pipeline/calculator_test.go
+  web:
+    command: null # no automated test runner yet
+    build_command: "cd /src/cv-pipeline/web && pnpm build"
+    dev_command: "cd /src/cv-pipeline/web && pnpm dev"
+
+# SDD Phase Rules — strict TDD is not yet enforced across the whole project.
+# Go pipeline: tests are mandatory for any calculator/pipeline logic changes.
+# Web layer: manual verification via pnpm dev + pnpm build until a test framework is added.
+strict_tdd: false
+tdd_scope:
+  - pipeline/ # Go unit tests required for pipeline changes
+
+phases:
+  proposal:
+    requires_user_approval: true
+    artifact: openspec/proposals/<change-id>.md
+  spec:
+    artifact: openspec/specs/<change-id>.md
+  design:
+    artifact: openspec/designs/<change-id>.md
+  tasks:
+    artifact: openspec/tasks/<change-id>.md
+  apply:
+    artifact: openspec/apply-progress/<change-id>.md
+  verify:
+    artifact: openspec/verify-reports/<change-id>.md
+
+# Change context for active SDD session
+active_change:
+  id: cv-web-optimization
+  title: "CV Web Optimization — Diagnostic Recommendations Implementation"
+  source_docs:
+    - docs/diagnostico-cv-web.md
+    - docs/informe.md
+  scope:
+    - Content restructuring (CAR/CCCR framework, About Me section, project curation)
+    - ATS optimization (single-column print layout, margins, fonts)
+    - SEO/discoverability (meta tags, Open Graph, Schema.org)
+    - Accessibility improvements (ARIA, focus styles, alt text)
+    - Bridge job reframing (Real2B as Help Desk, PIXI as Operations — keep but reframe with technical signal)
+  review_budget: 400 # changed lines per PR
+
+# Directories managed by OpenSpec (created on demand)
+directories:
+  proposals: openspec/proposals
+  specs: openspec/specs
+  designs: openspec/designs
+  tasks: openspec/tasks
+  apply_progress: openspec/apply-progress
+  verify_reports: openspec/verify-reports

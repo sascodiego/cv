@@ -16,12 +16,16 @@ const softSkills = cvData.skills.filter(s => softCategories.has(s.category));
 
 // Group technical skills by category
 const techByCategory = technicalSkills.reduce((acc, skill) => {
-  if (!acc[skill.category]) {
-    acc[skill.category] = [];
-  }
-  acc[skill.category].push(skill);
-  return acc;
+	if (!acc[skill.category]) {
+		acc[skill.category] = [];
+	}
+	acc[skill.category].push(skill);
+	return acc;
 }, {} as Record<string, typeof cvData.skills>);
+
+const aboutHtml = personalInfo.about_me
+	?.replace(/(C#\/\.NET|Go|pasarelas de pago|IoT)/g, '<strong class="about-highlight">$1</strong>')
+	.replace(/\n\n/g, '</p><p class="about-me-text">');
 ---
 
 <html lang="es">
@@ -29,7 +33,7 @@ const techByCategory = technicalSkills.reduce((acc, skill) => {
 		<meta charset="utf-8" />
 		<link rel="icon" type="image/svg+xml" href={`${base}favicon.svg`} />
 		<meta name="viewport" content="width=device-width, initial-scale=1" />
-		<meta name="theme-color" content="#0b0f19" />
+		<meta name="theme-color" content="#09090b" />
 		<meta name="generator" content={Astro.generator} />
 		<title>{personalInfo.name} | {personalInfo.title}</title>
 		<meta name="description" content={`${personalInfo.name} — ${personalInfo.title}. Más de 7 años diseñando sistemas distribuidos, soluciones IoT e integración legacy para el sector financiero, retail e industrial.`} />
@@ -40,9 +44,6 @@ const techByCategory = technicalSkills.reduce((acc, skill) => {
 		<meta property="og:type" content="website" />
 		<meta property="og:url" content={new URL(base, Astro.site).href} />
 		<meta property="og:locale" content="es_ES" />
-		<!-- Preconnect Google Fonts -->
-		<link rel="preconnect" href="https://fonts.googleapis.com" />
-		<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
 		<!-- Schema.org -->
 		<script type="application/ld+json" set:html={JSON.stringify({
 			"@context": "https://schema.org",
@@ -59,34 +60,58 @@ const techByCategory = technicalSkills.reduce((acc, skill) => {
 	</head>
 	<body>
 		<main role="main">
-			{/* Hero */}
 			<header class="hero" role="banner">
 				<h1>{personalInfo.name}</h1>
 				<p class="subtitle">{personalInfo.title}</p>
-
-				{/* Contact — Google Form only, no personal data */}
-				{googleFormUrl && (
-					<div class="contact-info">
-						<a href={googleFormUrl} target="_blank" rel="noopener noreferrer" class="contact-form-btn">
-							<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" aria-label="Email">
-								<path d="M48 64C21.5 64 0 85.5 0 112c0 15.1 7.1 29.3 19.2 38.4L236.8 313.6c11.4 8.5 27 8.5 38.4 0L492.8 150.4c12.1-9.1 19.2-23.3 19.2-38.4c0-26.5-21.5-48-48-48H48zM0 176V384c0 35.3 28.7 64 64 64H448c35.3 0 64-28.7 64-64V176L294.4 339.2c-22.8 17.1-54 17.1-76.8 0L0 176z"/>
-							</svg>
-							Contacto
-						</a>
-					</div>
-				)}
 			</header>
 
-			{/* About Me */}
-			{personalInfo.about_me && (
-				<section class="about-me">
+			<nav class="page-nav" aria-label="Secciones del CV">
+				<a href="#profile">Perfil</a>
+				<a href="#stack">Stack</a>
+				<a href="#experience">Experiencia</a>
+				{cvData.projects && cvData.projects.length > 0 && <a href="#projects">Proyectos</a>}
+				{cvData.recommendations && cvData.recommendations.length > 0 && <a href="#references">Referencias</a>}
+				<a href="#education">Educación</a>
+			</nav>
+
+			{aboutHtml && (
+				<section id="profile" class="about-me">
 					<h2>Sobre Mí</h2>
-					<p class="about-me-text">{personalInfo.about_me}</p>
+					<div class="about-me-copy" set:html={`<p class="about-me-text">${aboutHtml}</p>`} />
 				</section>
 			)}
 
-			{/* Work Experience */}
-			<section class="section-card">
+			<section id="stack">
+				<h2>Conocimientos y Experiencia</h2>
+				<div class="skills-grid">
+					{Object.entries(techByCategory).map(([category, skills]) => (
+						<div class="skill-category-card">
+							<h3 class="skill-category-title">{category}</h3>
+							<div class="skills-list">
+								{skills.map((skill) => (
+									<div class="skill-item">
+										<span class="skill-name">{skill.name}</span>
+										<span class="skill-experience">{skill.experience_text}</span>
+									</div>
+								))}
+							</div>
+						</div>
+					))}
+				</div>
+
+				{softSkills.length > 0 && (
+					<div class="soft-skills-section">
+						<h3>Competencias Profesionales</h3>
+						<div class="soft-skills-cloud">
+							{softSkills.map((skill) => (
+								<span class="soft-skill-tag">{skill.name}</span>
+							))}
+						</div>
+					</div>
+				)}
+			</section>
+
+			<section id="experience" class="section-card">
 				<h2>Experiencia Profesional</h2>
 				<div class="experience-list">
 					{cvData.work_experience.map((work) => (
@@ -135,9 +160,8 @@ const techByCategory = technicalSkills.reduce((acc, skill) => {
 				</div>
 			</section>
 
-			{/* Independent Projects */}
 			{cvData.projects && cvData.projects.length > 0 && (
-				<section class="section-card">
+				<section id="projects" class="section-card">
 					<h2>Proyectos Destacados</h2>
 					<div class="indie-projects-grid">
 						{cvData.projects.map((proj) => (
@@ -160,40 +184,23 @@ const techByCategory = technicalSkills.reduce((acc, skill) => {
 				</section>
 			)}
 
-			{/* Technical Skills */}
-			<section>
-				<h2>Conocimientos y Experiencia</h2>
-				<div class="skills-grid">
-					{Object.entries(techByCategory).map(([category, skills]) => (
-						<div class="skill-category-card">
-							<h3 class="skill-category-title">{category}</h3>
-							<div class="skills-list">
-								{skills.map((skill) => (
-									<div class="skill-item">
-										<span class="skill-name">{skill.name}</span>
-										<span class="skill-experience">{skill.experience_text}</span>
-									</div>
-								))}
-							</div>
-						</div>
-					))}
-				</div>
-
-				{/* Soft Skills — tag cloud without years */}
-				{softSkills.length > 0 && (
-					<div class="soft-skills-section">
-						<h3>Competencias Profesionales</h3>
-						<div class="soft-skills-cloud">
-							{softSkills.map((skill) => (
-								<span class="soft-skill-tag">{skill.name}</span>
-							))}
-						</div>
+			{cvData.recommendations && cvData.recommendations.length > 0 && (
+				<section id="references" class="section-card" role="complementary">
+					<h2>Recomendaciones</h2>
+					<div class="recommendations-grid">
+						{cvData.recommendations.map((rec) => (
+							<blockquote class="recommendation-card">
+								<p class="recommendation-text">"{rec.text}"</p>
+								<footer class="recommendation-author">
+									<cite class="author-name">Referencia profesional</cite>
+								</footer>
+							</blockquote>
+						))}
 					</div>
-				)}
-			</section>
+				</section>
+			)}
 
-			{/* Education */}
-			<section class="section-card">
+			<section id="education" class="section-card">
 				<h2>Educación</h2>
 				<div class="experience-list">
 					{cvData.education.map((edu) => (
@@ -214,27 +221,17 @@ const techByCategory = technicalSkills.reduce((acc, skill) => {
 				</div>
 			</section>
 
-			{/* Recommendations */}
-			{cvData.recommendations && cvData.recommendations.length > 0 && (
-				<section class="section-card" role="complementary">
-					<h2>Recomendaciones</h2>
-					<div class="recommendations-grid">
-						{cvData.recommendations.map((rec) => (
-							<blockquote class="recommendation-card">
-								<p class="recommendation-text">"{rec.text}"</p>
-								<footer class="recommendation-author">
-									<cite class="author-name">Referencia profesional</cite>
-								</footer>
-							</blockquote>
-						))}
-					</div>
-				</section>
-			)}
-
-			{/* Footer */}
 			<footer class="site-footer">
 				<p>Built with <a href="https://astro.build" target="_blank" rel="noopener noreferrer">Astro</a></p>
 			</footer>
 		</main>
+		{googleFormUrl && (
+			<a href={googleFormUrl} target="_blank" rel="noopener noreferrer" class="contact-form-btn floating-contact-btn" aria-label="Conversemos sobre oportunidades">
+				<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" aria-hidden="true" focusable="false">
+					<path d="M48 64C21.5 64 0 85.5 0 112c0 15.1 7.1 29.3 19.2 38.4L236.8 313.6c11.4 8.5 27 8.5 38.4 0L492.8 150.4c12.1-9.1 19.2-23.3 19.2-38.4c0-26.5-21.5-48-48-48H48zM0 176V384c0 35.3 28.7 64 64 64H448c35.3 0 64-28.7 64-64V176L294.4 339.2c-22.8 17.1-54 17.1-76.8 0L0 176z"/>
+				</svg>
+				Conversemos sobre oportunidades
+			</a>
+		)}
 	</body>
 </html>

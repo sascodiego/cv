@@ -127,7 +127,10 @@ const publicPdfPath = path.resolve(
 	__dirname,
 	"../public/Diego_Sasco_CV_Privado.pdf",
 );
-const distPdfPath = path.resolve(__dirname, "../dist/Diego_Sasco_CV_Privado.pdf");
+const distPdfPath = path.resolve(
+	__dirname,
+	"../dist/Diego_Sasco_CV_Privado.pdf",
+);
 
 // Datos privados inyectados desde .env
 const privateData = {

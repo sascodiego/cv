@@ -63,26 +63,29 @@ const aboutHtml = personalInfo.about_me
 	<head>
 		<meta charset="utf-8" />
 		<link rel="icon" type="image/x-icon" href={`${base}favicon.ico`} />
+		<link rel="apple-touch-icon" sizes="180x180" href={`${base}apple-touch-icon.png`} />
+		<link rel="manifest" href={`${base}manifest.json`} />
 		<meta name="viewport" content="width=device-width, initial-scale=1" />
 		<meta name="theme-color" content="#09090b" />
 		<meta name="generator" content={Astro.generator} />
-		<title>{personalInfo.name} — {personalInfo.title} | Distributed Systems & IoT</title>
-		<meta name="description" content={`${personalInfo.name} — ${personalInfo.title}. Más de 7 años diseñando sistemas distribuidos, soluciones IoT e integración legacy para el sector financiero, retail e industrial.`} />
+		<title>Diego Sasco | Desarrollador Senior de Software · CV</title>
+		<meta name="description" content="Diego Sasco, Desarrollador Senior de Software. Más de 7 años creando sistemas distribuidos, IoT e integración legacy para retail y servicios." />
 		<link rel="canonical" href={new URL(base, Astro.site).href} />
 		<!-- Open Graph -->
-		<meta property="og:title" content={`${personalInfo.name} | ${personalInfo.title}`} />
-		<meta property="og:description" content={`${personalInfo.name} — ${personalInfo.title}. Más de 7 años diseñando sistemas distribuidos, soluciones IoT e integración legacy para el sector financiero, retail e industrial.`} />
+		<meta property="og:site_name" content="Diego Sasco CV" />
+		<meta property="og:title" content="Diego Sasco | Desarrollador Senior de Software" />
+		<meta property="og:description" content="Diego Sasco, Desarrollador Senior de Software. Más de 7 años creando sistemas distribuidos, IoT e integración legacy para retail y servicios." />
 		<meta property="og:type" content="website" />
 		<meta property="og:url" content={new URL(base, Astro.site).href} />
 		<meta property="og:locale" content="es_ES" />
 		<meta property="og:image" content={`${base}og-image.svg`} />
 		<meta property="og:image:width" content="1200" />
 		<meta property="og:image:height" content="630" />
-		<meta property="og:image:alt" content={`${personalInfo.name} — ${personalInfo.title}`} />
+		<meta property="og:image:alt" content="Diego Sasco | Desarrollador Senior de Software" />
 		<!-- Twitter Card -->
 		<meta name="twitter:card" content="summary_large_image" />
-		<meta name="twitter:title" content={`${personalInfo.name} — ${personalInfo.title} | Distributed Systems & IoT`} />
-		<meta name="twitter:description" content={`${personalInfo.name} — ${personalInfo.title}. Más de 7 años diseñando sistemas distribuidos, soluciones IoT e integración legacy para el sector financiero, retail e industrial.`} />
+		<meta name="twitter:title" content="Diego Sasco | Desarrollador Senior de Software" />
+		<meta name="twitter:description" content="Diego Sasco, Desarrollador Senior de Software. Más de 7 años creando sistemas distribuidos, IoT e integración legacy para retail y servicios." />
 		<meta name="twitter:image" content={`${base}og-image.svg`} />
 		<!-- Schema.org -->
 		<script type="application/ld+json" set:html={JSON.stringify({

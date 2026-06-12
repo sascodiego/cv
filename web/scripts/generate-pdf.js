@@ -127,6 +127,7 @@ const publicPdfPath = path.resolve(
 	__dirname,
 	"../public/Diego_Sasco_CV_Privado.pdf",
 );
+const distPdfPath = path.resolve(__dirname, "../dist/Diego_Sasco_CV_Privado.pdf");
 
 // Datos privados inyectados desde .env
 const privateData = {
@@ -301,8 +302,10 @@ async function main() {
 		});
 
 		await copyFile(pdfPath, publicPdfPath);
+		await copyFile(pdfPath, distPdfPath);
 		console.log(`✅ PDF generado con éxito en: ${pdfPath}`);
 		console.log(`📄 Copia pública actualizada en: ${publicPdfPath}`);
+		console.log(`📦 Copia de despliegue actualizada en: ${distPdfPath}`);
 	} catch (err) {
 		console.error("❌ Error durante la generación del PDF:", err);
 	} finally {

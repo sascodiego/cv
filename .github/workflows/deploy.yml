@@ -38,10 +38,10 @@ jobs:
       - name: Install dependencies
         run: pnpm install --frozen-lockfile
 
-      - name: Build static site (public version)
+      - name: Generate PDF and build static site (public version)
         env:
           PUBLIC_GOOGLE_FORM_URL: ${{ secrets.PUBLIC_GOOGLE_FORM_URL }}
-        run: pnpm build
+        run: pnpm export-pdf
 
       - name: Upload Pages artifact
         uses: actions/upload-pages-artifact@v3

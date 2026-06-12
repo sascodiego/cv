@@ -84,28 +84,134 @@ button:focus-visible,
 }
 
 .hero {
-	text-align: left;
-	padding-block-end: 2rem;
-	border-block-end: 1px solid var(--color-border);
+	display: grid;
+	grid-template-columns: minmax(0, 1.6fr) minmax(240px, 0.8fr);
+	gap: 2rem;
+	align-items: end;
+	padding: 1.75rem 1.5rem 1.5rem;
+	border: 1px solid rgba(255, 255, 255, 0.08);
+	border-radius: 24px;
+	background:
+		radial-gradient(
+			circle at top left,
+			rgba(255, 255, 255, 0.065),
+			transparent 42%
+		),
+		linear-gradient(
+			180deg,
+			rgba(255, 255, 255, 0.03),
+			rgba(255, 255, 255, 0.015)
+		);
+	box-shadow: 0 24px 60px rgba(0, 0, 0, 0.22);
+}
+
+.hero-copy {
+	max-inline-size: 52rem;
+}
+
+.hero-eyebrow {
+	font-family: var(--font-mono);
+	font-size: 0.78rem;
+	font-weight: 700;
+	letter-spacing: 0.18em;
+	text-transform: uppercase;
+	color: var(--color-subtle);
+	margin-block-end: 0.8rem;
 }
 
 .hero h1 {
 	font-family: var(--font-sans);
-	font-size: clamp(2.65rem, 5vw, 3.4rem);
+	font-size: clamp(2.9rem, 5vw, 4.2rem);
 	font-weight: 800;
-	letter-spacing: -0.045em;
-	line-height: 1.05;
+	letter-spacing: -0.06em;
+	line-height: 0.98;
 	color: var(--color-text);
-	margin-block-end: 0.65rem;
+	margin-block-end: 0.8rem;
 }
 
 .hero .subtitle {
-	font-size: 1.25rem;
-	font-weight: 380;
-	line-height: 1.7;
+	font-size: 1.18rem;
+	font-weight: 420;
+	line-height: 1.55;
 	color: var(--color-muted);
-	max-inline-size: 48rem;
-	margin-block-end: 1.5rem;
+	max-inline-size: 40rem;
+	margin-block-end: 1rem;
+}
+
+.hero-summary {
+	max-inline-size: 46rem;
+	font-size: 1rem;
+	line-height: 1.72;
+	color: var(--color-subtle);
+}
+
+.hero-panel {
+	display: flex;
+	flex-direction: column;
+	align-items: flex-start;
+	justify-content: space-between;
+	gap: 1rem;
+	padding: 1rem;
+	border: 1px solid rgba(255, 255, 255, 0.06);
+	border-radius: 18px;
+	background: rgba(255, 255, 255, 0.02);
+}
+
+.hero-meta {
+	display: flex;
+	flex-wrap: wrap;
+	gap: 0.5rem;
+}
+
+.hero-meta span {
+	display: inline-flex;
+	align-items: center;
+	min-block-size: 28px;
+	padding: 0.2rem 0.6rem;
+	border: 1px solid rgba(255, 255, 255, 0.08);
+	border-radius: 999px;
+	background: rgba(255, 255, 255, 0.025);
+	font-family: var(--font-mono);
+	font-size: 0.72rem;
+	font-weight: 700;
+	letter-spacing: 0.08em;
+	text-transform: uppercase;
+	color: var(--color-muted);
+}
+
+.hero-actions {
+	display: flex;
+	flex-wrap: wrap;
+	gap: 0.75rem;
+}
+
+.pdf-download-btn {
+	display: inline-flex;
+	align-items: center;
+	justify-content: center;
+	min-block-size: 44px;
+	padding: 0.78rem 1rem;
+	border: 1px solid var(--color-border-strong);
+	border-radius: var(--radius-md);
+	background: linear-gradient(
+		180deg,
+		rgba(255, 255, 255, 0.045),
+		rgba(255, 255, 255, 0.02)
+	);
+	color: var(--color-text);
+	font-family: var(--font-mono);
+	font-size: 0.8125rem;
+	font-weight: 750;
+	letter-spacing: 0.08em;
+	text-decoration: none;
+	text-transform: uppercase;
+}
+
+.pdf-download-btn:hover,
+.pdf-download-btn:focus-visible {
+	background: rgba(255, 255, 255, 0.06);
+	border-color: rgba(255, 255, 255, 0.16);
+	color: var(--color-text);
 }
 
 .contact-info {
@@ -358,15 +464,16 @@ section {
 .skill-experience {
 	display: inline-flex;
 	align-items: center;
+	justify-self: end;
 	min-block-size: 24px;
 	font-family: var(--font-mono);
-	font-size: 0.875rem;
-	line-height: 1.3;
+	font-size: 0.8rem;
+	line-height: 1.2;
 	color: var(--color-muted);
-	background: rgba(255, 255, 255, 0.025);
-	border: 1px solid var(--color-border-strong);
-	border-radius: var(--radius-sm);
-	padding: 0.24rem 0.55rem;
+	background: rgba(255, 255, 255, 0.04);
+	border: 1px solid rgba(255, 255, 255, 0.08);
+	border-radius: 999px;
+	padding: 0.18rem 0.5rem;
 }
 
 .duration-tag {
@@ -396,6 +503,20 @@ section {
 	gap: 1rem;
 }
 
+.skill-category-card {
+	padding: 1.1rem 1.1rem 1rem;
+	background:
+		linear-gradient(
+			180deg,
+			rgba(255, 255, 255, 0.028),
+			rgba(255, 255, 255, 0.012)
+		),
+		var(--color-bg);
+	border: 1px solid rgba(255, 255, 255, 0.08);
+	border-radius: 16px;
+	box-shadow: 0 10px 30px rgba(0, 0, 0, 0.12);
+}
+
 .project-name {
 	font-size: 1.0625rem;
 	font-weight: 750;
@@ -411,7 +532,7 @@ section {
 .soft-skills-cloud {
 	display: flex;
 	flex-wrap: wrap;
-	gap: 0.55rem;
+	gap: 0.45rem;
 	margin-block-start: 0.25rem;
 }
 
@@ -423,35 +544,39 @@ section {
 .skills-grid {
 	display: grid;
 	grid-template-columns: repeat(2, minmax(0, 1fr));
-	gap: 2rem;
-}
-
-@media (min-width: 1120px) {
-	.skills-grid {
-		grid-template-columns: repeat(3, minmax(0, 1fr));
-	}
+	gap: 1.25rem;
 }
 
 .skill-category-title {
-	padding-block-end: 0.55rem;
-	border-block-end: 1px solid var(--color-border);
+	padding-block-end: 0.7rem;
+	border-block-end: 1px solid rgba(255, 255, 255, 0.1);
+	font-size: 1.05rem;
+	letter-spacing: 0.02em;
 }
 
 .skills-list {
-	gap: 0.85rem;
+	gap: 0.55rem;
+	margin-block-start: 0.25rem;
 }
 
 .skill-item {
-	display: flex;
-	justify-content: space-between;
-	align-items: baseline;
-	gap: 1rem;
-	font-size: 1.0625rem;
+	display: grid;
+	grid-template-columns: minmax(0, 1fr) auto;
+	align-items: center;
+	gap: 0.9rem;
+	padding-block: 0.28rem;
+	font-size: 1rem;
+	border-block-end: 1px solid rgba(255, 255, 255, 0.05);
+}
+
+.skill-item:last-child {
+	border-block-end: 0;
 }
 
 .skill-name {
-	font-weight: 500;
+	font-weight: 520;
 	color: var(--color-text);
+	line-height: 1.35;
 }
 
 .indie-project-title a,
@@ -492,11 +617,17 @@ section {
 }
 
 .soft-skills-section {
-	margin-block-start: 0.5rem;
+	margin-block-start: 1rem;
+	padding-block-start: 1rem;
+	border-block-start: 1px solid var(--color-border);
 }
 
 .soft-skills-section h3 {
 	margin-block-end: 0.8rem;
+	font-size: 1rem;
+	letter-spacing: 0.03em;
+	text-transform: uppercase;
+	color: var(--color-subtle);
 }
 
 .pdf-note {
@@ -518,6 +649,21 @@ section {
 	body {
 		padding-block: 8.75rem 2.5rem;
 		padding-inline: 1rem;
+	}
+
+	.hero {
+		grid-template-columns: 1fr;
+		gap: 1rem;
+		padding: 1.25rem 1rem 1rem;
+		border-radius: 18px;
+	}
+
+	.hero h1 {
+		font-size: 2.55rem;
+	}
+
+	.hero-panel {
+		width: 100%;
 	}
 
 	[id] {
@@ -559,16 +705,19 @@ section {
 		grid-template-columns: 1fr;
 	}
 
+	.skill-item {
+		grid-template-columns: minmax(0, 1fr);
+	}
+
+	.skill-experience {
+		justify-self: start;
+	}
+
 	main {
 		gap: 2.25rem;
 	}
 
-	.hero h1 {
-		font-size: 2.35rem;
-	}
-
-	.indie-project-title,
-	.skill-item {
+	.indie-project-title {
 		align-items: flex-start;
 		flex-direction: column;
 	}

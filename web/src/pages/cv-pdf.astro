@@ -1,485 +1,363 @@
 ---
 import cvData from '../data/cv-processed.json';
 
-// Access top-level data
-const { personal_info, skills, work_experience, education, recommendations } = cvData;
+const { personal_info, skills, work_experience, education } = cvData;
 
-// Define category mapping to Harvard-standard headers
 const categoryMapping = {
-  'Languages & Frameworks': 'Languages & Frameworks',
-  'Databases & Obs': 'Databases & Messaging',
-  'Architecture & Protocols': 'Databases & Messaging',
-  'Infrastructure & DevOps': 'Tools & Platforms',
-  'Automation & QA': 'Tools & Platforms',
-  'IoT & Embedded': 'IoT & Embedded',
-  'Metodologías & Prácticas': null, // omit from PDF
-  'Habilidades Funcionales': null,   // omit from PDF
-  'Competencias Blandas': null       // omit from PDF
+	'Languages & Frameworks': 'Lenguajes y frameworks',
+	'Databases & Obs': 'Bases de datos y mensajería',
+	'Databases & Messaging': 'Bases de datos y mensajería',
+	'Architecture & Protocols': 'Bases de datos y mensajería',
+	'Infrastructure & DevOps': null,
+	'Automation & QA': null,
+	'IoT & Embedded': 'IoT y embebidos',
 };
 
-// Group skills by mapped category
-const skillGroups = skills.reduce((groups, skill) => {
-  const mappedCategory = categoryMapping[skill.category];
-  if (mappedCategory) {
-    if (!groups[mappedCategory]) {
-      groups[mappedCategory] = [];
-    }
-    groups[mappedCategory].push(skill);
-  }
-  return groups;
-}, {});
+const SKILLS_PER_GROUP = 4;
 
-// Get sorted category keys
-const sortedCategories = Object.keys(skillGroups).sort();
+const groupedSkills = Object.entries(
+	 skills.reduce((groups, skill) => {
+		const mappedCategory = categoryMapping[skill.category];
+		if (!mappedCategory) return groups;
+		if (!groups[mappedCategory]) groups[mappedCategory] = [];
+		groups[mappedCategory].push(skill);
+		return groups;
+	}, {}),
+)
+	.map(([label, items]) => {
+		const orderedItems = [...items].sort((a, b) => b.years_experience - a.years_experience);
+		const visibleItems = orderedItems.slice(0, SKILLS_PER_GROUP).map((skill) => skill.name);
+		return {
+			label,
+			items: visibleItems,
+			extraCount: Math.max(0, orderedItems.length - visibleItems.length),
+		};
+	})
+	.sort((a, b) => {
+		const order = ['Lenguajes y frameworks', 'Bases de datos y mensajería', 'IoT y embebidos'];
+		return order.indexOf(a.label) - order.indexOf(b.label);
+	});
 
-// Extract all projects from work_experience entries
-const allProjects = work_experience
-  .filter(entry => entry.projects && entry.projects.length > 0)
-  .flatMap(entry =>
-    entry.projects.map(project => ({
-      ...project,
-      company: entry.company, // Track source company for context
-      entryPeriod: entry.period_text
-    }))
-  );
+const summaryText = personal_info.about_me
+	.split(/\n\s*\n/)[0]
+	.replace(/\s+/g, ' ')
+	.trim();
 
-// Sort projects by start_date (most recent first)
-const sortedProjects = allProjects.sort((a, b) =>
-  new Date(b.start_date) - new Date(a.start_date)
-);
-
-// Select up to 5 projects
-const selectedProjects = sortedProjects.slice(0, 5);
-
-// Truncate summary to first 2-3 sentences (approx. 200 chars)
-const truncateSummary = (text, maxLength = 200) => {
-  if (text.length <= maxLength) return text;
-
-  // Find last sentence boundary within limit
-  const truncated = text.substring(0, maxLength);
-  const lastPeriod = truncated.lastIndexOf('.');
-  const lastSentenceEnd = lastPeriod > 0 ? lastPeriod + 1 : maxLength;
-
-  return text.substring(0, lastSentenceEnd).trim();
-};
-
-const summaryText = truncateSummary(personal_info.about_me, 200);
-
-// Sort work_experience by end_date (most recent first)
 const sortedWorkExperience = [...work_experience].sort((a, b) => {
-  // Handle "Presente" or future dates
-  const aEnd = a.end_date === '2026-06-10' ? '2999-12-31' : a.end_date;
-  const bEnd = b.end_date === '2026-06-10' ? '2999-12-31' : b.end_date;
-
-  return new Date(bEnd) - new Date(aEnd);
+	const aEnd = a.end_date === '2026-06-10' ? '2999-12-31' : a.end_date;
+	const bEnd = b.end_date === '2026-06-10' ? '2999-12-31' : b.end_date;
+	return new Date(bEnd) - new Date(aEnd);
 });
 
-// Sort education by end_date (most recent first)
-const sortedEducation = [...education].sort((a, b) =>
-  new Date(b.end_date) - new Date(a.end_date)
-);
+const sortedEducation = [...education].sort((a, b) => new Date(b.end_date) - new Date(a.end_date));
 
-// Split description into 1-3 bullet points
-const splitDescriptionToBullets = (description, maxBullets = 3) => {
-  // Split by sentence boundaries (period + space)
-  const sentences = description.match(/[^.!?]+[.!?]+/g) || [description];
+const splitSentences = (text) =>
+	text
+		.replace(/\s+/g, ' ')
+		.trim()
+		.split(/(?<=[.!?])\s+(?=[A-ZÁÉÍÓÚÜÑ¿¡])/)
+		.filter(Boolean);
 
-  // Take up to maxBullets sentences
-  return sentences.slice(0, maxBullets).map(s => s.trim());
-};
+const formatBullets = (description, maxBullets = 2) =>
+	splitSentences(description).slice(0, maxBullets).map((sentence) => sentence.replace(/\s+/g, ' ').trim());
 ---
 
 <!DOCTYPE html>
 <html lang="es">
 <head>
-  <meta charset="UTF-8" />
-  <title>{personal_info.name} - CV</title>
-  <style>
-    @media print {
-      @page {
-        size: A4;
-        margin: 0mm; /* Puppeteer handles 15mm margins via PDF options */
-      }
+	<meta charset="UTF-8" />
+	<title>{personal_info.name} - CV</title>
+	<style>
+		@page {
+			size: A4;
+			margin: 7mm 9mm 7mm 9mm;
+		}
 
-      body {
-        font-family: 'Times New Roman', Times, serif;
-        font-size: 11pt;
-        line-height: 1.3;
-        color: #000000;
-        background-color: #ffffff;
-        margin: 0;
-        padding: 0;
-        -webkit-print-color-adjust: exact;
-        print-color-adjust: exact;
-      }
+		@media print {
+			body {
+				font-family: 'Times New Roman', Times, serif;
+				font-size: 10.75pt;
+				line-height: 1.26;
+				color: #000;
+				background: #fff;
+				margin: 0;
+				padding: 0;
+				-webkit-print-color-adjust: exact;
+				print-color-adjust: exact;
+			}
 
-      .cv-container {
-        width: 100%;
-        max-width: 100%;
-        margin: 0;
-        padding: 0;
-        background: #ffffff;
-      }
+			.cv-document {
+				width: 100%;
+				margin: 0;
+				padding: 0;
+			}
 
-      /* Section headers - bold, uppercase, no underline */
-      h2.section-header {
-        font-family: 'Times New Roman', Times, serif;
-        font-size: 12pt;
-        font-weight: bold;
-        text-transform: uppercase;
-        color: #000000;
-        margin: 16pt 0 8pt 0;
-        padding: 0;
-        border-bottom: none;
-        letter-spacing: 0.5pt;
-      }
+			.cv-header {
+				text-align: center;
+				padding-bottom: 7pt;
+				margin-bottom: 7pt;
+				border-bottom: 1pt solid #000;
+			}
 
-      /* Entry headers */
-      .entry-header {
-        display: flex;
-        justify-content: space-between;
-        align-items: baseline;
-        margin-bottom: 4pt;
-      }
+			.cv-header h1 {
+				margin: 0;
+				font-family: 'Times New Roman', Times, serif;
+				font-size: 24pt;
+				font-weight: bold;
+				text-transform: uppercase;
+				letter-spacing: 1pt;
+				line-height: 1.01;
+			}
 
-      h3.company-name,
-      h3.project-name,
-      h3.institution-name {
-        font-family: 'Times New Roman', Times, serif;
-        font-size: 11pt;
-        font-weight: bold;
-        color: #000000;
-        margin: 0;
-        padding: 0;
-      }
+			.professional-title {
+				margin: 3pt 0 5pt;
+				font-family: 'Times New Roman', Times, serif;
+				font-size: 12pt;
+				font-style: italic;
+				font-weight: normal;
+				color: #333;
+				line-height: 1.2;
+			}
 
-      .period {
-        font-family: 'Times New Roman', Times, serif;
-        font-size: 10pt;
-        font-weight: normal;
-        color: #000000;
-        margin: 0;
-        padding: 0;
-      }
+			.contact-info {
+				display: flex;
+				flex-wrap: wrap;
+				justify-content: center;
+				align-items: baseline;
+				gap: 0;
+				margin: 2pt 0 0;
+				padding: 0;
+			}
 
-      /* Role and degree titles */
-      .role-title,
-      .degree-title {
-        font-family: 'Times New Roman', Times, serif;
-        font-size: 11pt;
-        font-weight: normal;
-        color: #000000;
-        margin: 0 0 6pt 0;
-        padding: 0;
-      }
+			.contact-item,
+			.contact-separator {
+				display: inline-flex;
+				align-items: baseline;
+				font-family: 'Times New Roman', Times, serif;
+				font-size: 9.25pt;
+				line-height: 1;
+				color: #000;
+				white-space: nowrap;
+			}
 
-      /* Entry spacing */
-      .experience-entry,
-      .project-entry,
-      .education-entry {
-        margin-bottom: 12pt;
-        page-break-inside: avoid;
-      }
+			.contact-item {
+				text-decoration: none;
+			}
 
-      /* Bullets */
-      .entry-bullets {
-        margin: 6pt 0 6pt 0;
-        padding-left: 18pt;
-        list-style-type: disc;
-        color: #000000;
-      }
+			.contact-item a {
+				color: #000;
+				text-decoration: none;
+			}
 
-      .entry-bullets li {
-        font-family: 'Times New Roman', Times, serif;
-        font-size: 11pt;
-        line-height: 1.3;
-        color: #000000;
-        margin-bottom: 4pt;
-        padding-left: 2pt;
-      }
+			.contact-separator {
+				padding: 0 4pt;
+			}
 
-      /* Technologies list */
-      .technologies,
-      .project-tech {
-        font-family: 'Times New Roman', Times, serif;
-        font-size: 10pt;
-        font-style: italic;
-        color: #000000;
-        margin: 6pt 0 0 0;
-        padding: 0;
-      }
+			.summary-text {
+				margin: 0 0 7pt;
+				font-family: 'Times New Roman', Times, serif;
+				font-size: 10.75pt;
+				font-style: italic;
+				line-height: 1.24;
+				text-align: justify;
+				color: #111;
+			}
 
-      /* Skills section */
-      .skill-category {
-        margin-bottom: 10pt;
-        page-break-inside: avoid;
-      }
+			.section {
+				margin-top: 0;
+			}
 
-      h3.skill-category-header {
-        font-family: 'Times New Roman', Times, serif;
-        font-size: 11pt;
-        font-weight: bold;
-        color: #000000;
-        margin: 0 0 4pt 0;
-        padding: 0;
-      }
+			h2.section-header {
+				margin: 8pt 0 3pt;
+				padding: 0 0 3pt;
+				font-family: 'Times New Roman', Times, serif;
+				font-size: 13pt;
+				font-weight: bold;
+				text-transform: uppercase;
+				letter-spacing: 0.5pt;
+				border-bottom: 1pt solid #000;
+				page-break-after: avoid;
+				page-break-inside: avoid;
+				line-height: 1.12;
+			}
 
-      .skill-list {
-        font-family: 'Times New Roman', Times, serif;
-        font-size: 11pt;
-        line-height: 1.3;
-        color: #000000;
-        margin: 0;
-        padding: 0;
-      }
+			.entry {
+				margin: 0 0 6pt;
+				page-break-inside: avoid;
+			}
 
-      /* Summary text */
-      .summary-text {
-        font-family: 'Times New Roman', Times, serif;
-        font-size: 11pt;
-        line-height: 1.4;
-        color: #000000;
-        margin: 0 0 0 0;
-        padding: 0;
-        text-align: justify;
-      }
+			.entry-header {
+				display: grid;
+				grid-template-columns: minmax(0, 1fr) 88pt;
+				column-gap: 8pt;
+				align-items: start;
+				margin: 0 0 3pt;
+			}
 
-      /* References section */
-      .recommendation-card {
-        margin-bottom: 12pt;
-        padding: 0;
-        border: none;
-        background: #ffffff;
-        page-break-inside: avoid;
-      }
+			h3.company-name,
+			h3.institution-name,
+			h3.project-name {
+				margin: 0;
+				font-family: 'Times New Roman', Times, serif;
+				font-size: 12.25pt;
+				font-weight: bold;
+				line-height: 1.06;
+			}
 
-      .recommendation-text {
-        font-family: 'Times New Roman', Times, serif;
-        font-size: 11pt;
-        line-height: 1.4;
-        color: #000000;
-        margin: 0 0 8pt 0;
-        padding: 0 0 0 18pt;
-        border-left: 1px solid #000000;
-        quotes: "“" "”" "‘" "’";
-      }
+			.period {
+				margin: 0;
+				font-family: 'Times New Roman', Times, serif;
+				font-size: 10pt;
+				font-style: italic;
+				font-weight: bold;
+				white-space: nowrap;
+				justify-self: end;
+				text-align: right;
+				color: #111;
+			}
 
-      .recommendation-text::before {
-        content: open-quote;
-        font-size: 12pt;
-        margin-left: -4pt;
-      }
+			.role-title,
+			.degree-title,
+			.project-title {
+				margin: 0 0 4pt;
+				font-family: 'Times New Roman', Times, serif;
+				font-size: 11pt;
+				font-weight: normal;
+				line-height: 1.12;
+			}
 
-      .recommendation-text::after {
-        content: close-quote;
-      }
+			.entry-bullets {
+				margin: 4pt 0 0 13pt;
+				padding: 0;
+			}
 
-      .recommendation-author {
-        font-family: 'Times New Roman', Times, serif;
-        font-size: 10pt;
-        color: #000000;
-        margin: 0;
-        padding: 0;
-      }
+			.entry-bullets li {
+				margin: 0 0 2pt;
+				font-family: 'Times New Roman', Times, serif;
+				font-size: 10.25pt;
+				line-height: 1.16;
+			}
 
-      .author-name {
-        font-style: italic;
-        font-weight: normal;
-      }
+			.skills-grid {
+				display: grid;
+				grid-template-columns: 1fr;
+				gap: 5pt;
+				margin: 0;
+			}
 
-      .author-role {
-        font-style: normal;
-      }
+			.skill-row {
+				display: grid;
+				grid-template-columns: 122pt minmax(0, 1fr);
+				column-gap: 8pt;
+				align-items: baseline;
+			}
 
-      .author-relation {
-        font-style: normal;
-      }
+			.skill-label {
+				font-family: 'Times New Roman', Times, serif;
+				font-size: 10.6pt;
+				font-weight: bold;
+				line-height: 1.15;
+			}
 
-      .references-fallback {
-        font-family: 'Times New Roman', Times, serif;
-        font-size: 11pt;
-        color: #000000;
-        margin: 0;
-        padding: 0;
-        font-style: italic;
-      }
+			.skill-items {
+				font-family: 'Times New Roman', Times, serif;
+				font-size: 10.1pt;
+				line-height: 1.2;
+			}
 
-      /* Page break control */
-      section {
-        page-break-after: auto;
-      }
+			.skill-more {
+				font-style: italic;
+				white-space: nowrap;
+			}
 
-      section:last-child {
-        page-break-after: avoid;
-      }
+			.section,
+			.entry,
+			.skills-grid {
+				page-break-inside: avoid;
+			}
+		}
 
-      .section-header {
-        page-break-after: avoid;
-        page-break-inside: avoid;
-      }
+		@media screen {
+			body {
+				font-family: Arial, sans-serif;
+				background: #f5f5f5;
+				margin: 0;
+				padding: 20px;
+			}
 
-      /* PDF note (optional) */
-      .pdf-note {
-        font-family: 'Times New Roman', Times, serif;
-        font-size: 9pt;
-        color: #000000;
-        margin: 20pt 0 0 0;
-        padding: 0;
-        text-align: center;
-        font-style: italic;
-      }
-
-      /* Ensure no dark theme remnants */
-      *,
-      *::before,
-      *::after {
-        box-sizing: border-box;
-      }
-    }
-
-    /* Screen styles (for preview, not PDF) */
-    @media screen {
-      body {
-        font-family: 'Arial', sans-serif;
-        font-size: 11pt;
-        line-height: 1.3;
-        color: #000000;
-        background-color: #f5f5f5;
-        margin: 20px;
-        padding: 20px;
-      }
-
-      .cv-container {
-        background: #ffffff;
-        max-width: 210mm;
-        margin: 0 auto;
-        padding: 15mm;
-        box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
-      }
-
-      h2.section-header {
-        font-family: 'Arial', sans-serif;
-        font-size: 12pt;
-        font-weight: bold;
-        text-transform: uppercase;
-        color: #000000;
-        margin: 16pt 0 8pt 0;
-        padding: 0;
-        border-bottom: none;
-      }
-    }
-  </style>
+			.cv-document {
+				max-width: 210mm;
+				margin: 0 auto;
+				padding: 15mm;
+				background: #fff;
+				box-shadow: 0 2px 8px rgba(0,0,0,0.08);
+			}
+		}
+	</style>
 </head>
 <body>
-  <div class="cv-container">
-    <!-- Section 1: Header -->
-    <header class="cv-header">
-      <h1>{personal_info.name}</h1>
-      <p class="professional-title">{personal_info.title}</p>
-      <div class="contact-info">
-        <!-- Puppeteer injects contact items here -->
-      </div>
-    </header>
+	<div class="cv-document">
+		<header class="cv-header">
+			<h1>{personal_info.name}</h1>
+			<p class="professional-title">{personal_info.title}</p>
+			<div class="contact-info">
+				<!-- Contact items injected by Puppeteer -->
+			</div>
+		</header>
 
-    <!-- Section 2: Summary -->
-    <section class="summary-section">
-      <h2 class="section-header">PROFESSIONAL SUMMARY</h2>
-      <p class="summary-text">{summaryText}</p>
-    </section>
+		<p class="summary-text">{summaryText}</p>
 
-    <!-- Section 3: Skills -->
-    <section class="skills-section">
-      <h2 class="section-header">TECHNICAL SKILLS</h2>
+		<section class="section experience-section">
+			<h2 class="section-header">EXPERIENCIA PROFESIONAL</h2>
+			{sortedWorkExperience.map((entry) => (
+				<article class="entry experience-entry">
+					<div class="entry-header">
+						<h3 class="company-name">{entry.company}</h3>
+						<span class="period">{entry.period_text}</span>
+					</div>
+					<p class="role-title">{entry.role}</p>
+					<ul class="entry-bullets">
+						{formatBullets(entry.description, 2, 118).map((bullet) => (
+							<li>{bullet}</li>
+						))}
+					</ul>
+				</article>
+			))}
+		</section>
 
-      {sortedCategories.map(category => (
-        <div class="skill-category">
-          <h3 class="skill-category-header">{category}</h3>
-          <p class="skill-list">
-            {skillGroups[category].map(skill => skill.name + ' (' + skill.experience_text + ')').join(', ')}
-          </p>
-        </div>
-      ))}
-    </section>
+		<section class="section education-section">
+			<h2 class="section-header">EDUCACIÓN</h2>
+			{sortedEducation.map((entry) => (
+				<article class="entry education-entry">
+					<div class="entry-header">
+						<h3 class="institution-name">{entry.institution}</h3>
+						<span class="period">{entry.period_text}</span>
+					</div>
+					<p class="degree-title">
+						{entry.degree}
+						{entry.status ? ` - ${entry.status}` : ''}
+					</p>
+				</article>
+			))}
+		</section>
 
-    <!-- Section 4: Experience -->
-    <section class="experience-section">
-      <h2 class="section-header">PROFESSIONAL EXPERIENCE</h2>
+		<section class="section skills-section">
+			<h2 class="section-header">HABILIDADES TÉCNICAS</h2>
+			<div class="skills-grid">
+				{groupedSkills.map((group) => (
+					<div class="skill-row">
+						<span class="skill-label">{group.label}</span>
+						<span class="skill-items">
+							{group.items.join(' · ')}
+							{group.extraCount > 0 && (
+								<span class="skill-more"> · +{group.extraCount} más</span>
+							)}
+						</span>
+					</div>
+				))}
+			</div>
+		</section>
 
-      {sortedWorkExperience.map(entry => (
-        <article class="experience-entry">
-          <div class="entry-header">
-            <h3 class="company-name">{entry.company}</h3>
-            <span class="period">{entry.period_text}</span>
-          </div>
-          <p class="role-title">{entry.role}</p>
-          <ul class="entry-bullets">
-            {splitDescriptionToBullets(entry.description).map(bullet => (
-              <li>{bullet}</li>
-            ))}
-          </ul>
-          {entry.technologies && entry.technologies.length > 0 && (
-            <p class="technologies">Technologies: {entry.technologies.join(', ')}</p>
-          )}
-        </article>
-      ))}
-    </section>
-
-    <!-- Section 5: Projects -->
-    {selectedProjects.length > 0 && (
-      <section class="projects-section">
-        <h2 class="section-header">KEY PROJECTS</h2>
-
-        {selectedProjects.map(project => (
-          <article class="project-entry">
-            <div class="entry-header">
-              <h3 class="project-name">{project.name} ({project.company})</h3>
-              <span class="period">{project.period_text}</span>
-            </div>
-            {project.technologies && project.technologies.length > 0 && (
-              <p class="project-tech">{project.technologies.join(', ')}</p>
-            )}
-            <ul class="entry-bullets">
-              {splitDescriptionToBullets(project.description).map(bullet => (
-                <li>{bullet}</li>
-              ))}
-            </ul>
-          </article>
-        ))}
-      </section>
-    )}
-
-    <!-- Section 6: Education -->
-    <section class="education-section">
-      <h2 class="section-header">EDUCATION</h2>
-
-      {sortedEducation.map(entry => (
-        <article class="education-entry">
-          <div class="entry-header">
-            <h3 class="institution-name">{entry.institution}</h3>
-            <span class="period">{entry.period_text}</span>
-          </div>
-          <p class="degree-title">{entry.degree}</p>
-          {entry.status && <p class="education-status">{entry.status}</p>}
-        </article>
-      ))}
-    </section>
-
-    <!-- Section 7: References -->
-    <section class="references-section">
-      <h2 class="section-header">REFERENCES</h2>
-
-      {recommendations.map(rec => (
-        <div class="recommendation-card">
-          <blockquote class="recommendation-text">{rec.text}</blockquote>
-          <!-- Puppeteer injects recommender details here -->
-        </div>
-      ))}
-    </section>
-
-    <!-- Optional: PDF Note -->
-    <div class="pdf-note">
-      <!-- Optional footer note for versioning or additional info -->
-    </div>
-  </div>
+	</div>
 </body>
 </html>

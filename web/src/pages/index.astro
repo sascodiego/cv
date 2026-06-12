@@ -10,6 +10,25 @@ const base = import.meta.env.BASE_URL;
 // Soft skill categories to render separately
 const softCategories = new Set(['Competencias Blandas', 'Habilidades Funcionales']);
 
+const skillCategoryLabels: Record<string, string> = {
+	'Languages & Frameworks': 'Lenguajes y frameworks',
+	'Databases & Obs': 'Bases de datos y observabilidad',
+	'Databases & Messaging': 'Bases de datos y mensajería',
+	'Architecture & Protocols': 'Arquitectura y protocolos',
+	'Infrastructure & DevOps': 'Infraestructura y DevOps',
+	'Automation & QA': 'Automatización y QA',
+	'IoT & Embedded': 'IoT y embebidos',
+};
+
+const skillCategoryOrder = [
+	'Languages & Frameworks',
+	'Databases & Messaging',
+	'Architecture & Protocols',
+	'Infrastructure & DevOps',
+	'Automation & QA',
+	'IoT & Embedded',
+];
+
 // Split skills into technical (with years) and soft (tag cloud)
 const technicalSkills = cvData.skills.filter(s => !softCategories.has(s.category));
 const softSkills = cvData.skills.filter(s => softCategories.has(s.category));
@@ -22,6 +41,18 @@ const techByCategory = technicalSkills.reduce((acc, skill) => {
 	acc[skill.category].push(skill);
 	return acc;
 }, {} as Record<string, typeof cvData.skills>);
+
+const orderedTechCategories = skillCategoryOrder
+	.map((category) => [category, techByCategory[category] || []] as const)
+	.filter(([, skills]) => skills.length > 0)
+	.map(([category, skills]) => [skillCategoryLabels[category] || category, [...skills].sort((a, b) => b.years_experience - a.years_experience)] as const);
+
+const pdfDownloadUrl = `${base}Diego_Sasco_CV_Privado.pdf`;
+
+const heroSummary = personalInfo.about_me
+	.split(/\n\n/)[0]
+	.replace(/\s+/g, ' ')
+	.trim();
 
 const aboutHtml = personalInfo.about_me
 	?.replace(/(C#\/\.NET|Go|pasarelas de pago|IoT)/g, '<strong class="about-highlight">$1</strong>')
@@ -76,17 +107,31 @@ const aboutHtml = personalInfo.about_me
 	<body>
 		<main role="main">
 			<header class="hero" role="banner">
-				<h1>{personalInfo.name}</h1>
-				<p class="subtitle">{personalInfo.title}</p>
+				<div class="hero-copy">
+					<p class="hero-eyebrow">Perfil profesional</p>
+					<h1>{personalInfo.name}</h1>
+					<p class="subtitle">{personalInfo.title}</p>
+					<p class="hero-summary">{heroSummary}</p>
+				</div>
+				<div class="hero-panel">
+					<div class="hero-meta">
+						<span>Backend</span>
+						<span>IoT</span>
+						<span>Integración</span>
+					</div>
+					<a class="pdf-download-btn" href={pdfDownloadUrl} download>
+						Descargar PDF
+					</a>
+				</div>
 			</header>
 
 			<nav class="page-nav" aria-label="Secciones del CV">
 				<a href="#profile">Perfil</a>
-				<a href="#stack">Stack</a>
+				<a href="#stack">Habilidades</a>
 				<a href="#experience">Experiencia</a>
 				{cvData.projects && cvData.projects.length > 0 && <a href="#projects">Proyectos</a>}
-				{cvData.recommendations && cvData.recommendations.length > 0 && <a href="#references">Referencias</a>}
 				<a href="#education">Educación</a>
+				{cvData.recommendations && cvData.recommendations.length > 0 && <a href="#references">Recomendaciones</a>}
 			</nav>
 
 			{aboutHtml && (
@@ -97,9 +142,9 @@ const aboutHtml = personalInfo.about_me
 			)}
 
 			<section id="stack">
-				<h2>Conocimientos y Experiencia</h2>
+				<h2>Habilidades técnicas</h2>
 				<div class="skills-grid">
-					{Object.entries(techByCategory).map(([category, skills]) => (
+					{orderedTechCategories.map(([category, skills]) => (
 						<div class="skill-category-card">
 							<h3 class="skill-category-title">{category}</h3>
 							<div class="skills-list">
@@ -116,7 +161,7 @@ const aboutHtml = personalInfo.about_me
 
 				{softSkills.length > 0 && (
 					<div class="soft-skills-section">
-						<h3>Competencias Profesionales</h3>
+						<h3>Competencias blandas</h3>
 						<div class="soft-skills-cloud">
 							{softSkills.map((skill) => (
 								<span class="soft-skill-tag">{skill.name}</span>
@@ -199,22 +244,6 @@ const aboutHtml = personalInfo.about_me
 				</section>
 			)}
 
-			{cvData.recommendations && cvData.recommendations.length > 0 && (
-				<section id="references" class="section-card" role="complementary">
-					<h2>Recomendaciones</h2>
-					<div class="recommendations-grid">
-						{cvData.recommendations.map((rec) => (
-							<blockquote class="recommendation-card">
-								<p class="recommendation-text">"{rec.text}"</p>
-								<footer class="recommendation-author">
-									<cite class="author-name">Referencia profesional</cite>
-								</footer>
-							</blockquote>
-						))}
-					</div>
-				</section>
-			)}
-
 			<section id="education" class="section-card">
 				<h2>Educación</h2>
 				<div class="experience-list">
@@ -235,6 +264,22 @@ const aboutHtml = personalInfo.about_me
 					))}
 				</div>
 			</section>
+
+			{cvData.recommendations && cvData.recommendations.length > 0 && (
+				<section id="references" class="section-card" role="complementary">
+					<h2>Recomendaciones</h2>
+					<div class="recommendations-grid">
+						{cvData.recommendations.map((rec) => (
+							<blockquote class="recommendation-card">
+								<p class="recommendation-text">"{rec.text}"</p>
+								<footer class="recommendation-author">
+									<cite class="author-name">Referencia profesional</cite>
+								</footer>
+							</blockquote>
+						))}
+					</div>
+				</section>
+			)}
 
 		</main>
 		{googleFormUrl && (

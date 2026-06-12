@@ -1,14 +1,14 @@
 {
   "personal_info": {
-    "name": "Diego Sasco",
+    "name": "Diego Gabriel Sasco Cordero",
     "title": "Desarrollador de Software Senior",
-    "about_me": "Soy desarrollador de software con más de 7 años de experiencia, especializado en construir soluciones backend (C#/.NET, Go) y herramientas de automatización para los sectores retail y servicios. Mi experiencia fuerte está en la integración de sistemas, la integracion de pasarelas de pago y la automatización de procesos administrativos críticos mediante software de escritorio y arquitecturas distribuidas.\n\nDe forma complementaria, desarrollo soluciones IoT y software embebido en Linux (Raspberry Pi, ESP32) para el control de dispositivos en puntos de venta y entornos comerciales. Diseño e implemento herramientas pensando siempre en la confiabilidad, la seguridad por diseño y la estabilidad operativa de los sistemas en producción."
+    "about_me": "Soy desarrollador de software con más de 7 años de experiencia, especializado en construir soluciones backend y herramientas de automatización para los sectores de retail y servicios. Mi experiencia fuerte está en la integración de sistemas, la integracion de pasarelas de pago y la automatización de procesos administrativos críticos mediante software de escritorio y arquitecturas distribuidas.\n\nDe forma complementaria, desarrollo soluciones IoT y software embebido en Linux (Raspberry Pi, ESP32) para el control de dispositivos en puntos de venta y entornos comerciales. Diseño e implemento herramientas pensando siempre en la confiabilidad, la seguridad por diseño y la estabilidad operativa de los sistemas en producción."
   },
   "skills": [
     {
       "id": "csharp",
       "name": "C# / .NET",
-      "category": "Languages & Frameworks",
+      "category": "Languages \u0026 Frameworks",
       "months_experience": 85,
       "years_experience": 7.083333333333333,
       "experience_text": "7 años y 1 mes"
@@ -16,7 +16,7 @@
     {
       "id": "golang",
       "name": "Go",
-      "category": "Languages & Frameworks",
+      "category": "Languages \u0026 Frameworks",
       "months_experience": 24,
       "years_experience": 2,
       "experience_text": "2 años"
@@ -24,7 +24,7 @@
     {
       "id": "python",
       "name": "Python",
-      "category": "Languages & Frameworks",
+      "category": "Languages \u0026 Frameworks",
       "months_experience": 36,
       "years_experience": 3,
       "experience_text": "3 años"
@@ -32,7 +32,7 @@
     {
       "id": "javascript",
       "name": "JavaScript / TypeScript",
-      "category": "Languages & Frameworks",
+      "category": "Languages \u0026 Frameworks",
       "months_experience": 12,
       "years_experience": 1,
       "experience_text": "1 año"
@@ -40,7 +40,7 @@
     {
       "id": "sql",
       "name": "SQL (PostgreSQL / SQL Server)",
-      "category": "Databases & Obs",
+      "category": "Databases \u0026 Obs",
       "months_experience": 82,
       "years_experience": 6.833333333333333,
       "experience_text": "6 años y 10 meses"
@@ -48,7 +48,7 @@
     {
       "id": "grpc",
       "name": "gRPC",
-      "category": "Architecture & Protocols",
+      "category": "Architecture \u0026 Protocols",
       "months_experience": 24,
       "years_experience": 2,
       "experience_text": "2 años"
@@ -56,7 +56,7 @@
     {
       "id": "rabbitmq",
       "name": "RabbitMQ",
-      "category": "Architecture & Protocols",
+      "category": "Architecture \u0026 Protocols",
       "months_experience": 50,
       "years_experience": 4.166666666666667,
       "experience_text": "4 años y 2 meses"
@@ -64,7 +64,7 @@
     {
       "id": "soap",
       "name": "SOAP / XML",
-      "category": "Architecture & Protocols",
+      "category": "Architecture \u0026 Protocols",
       "months_experience": 3,
       "years_experience": 0.25,
       "experience_text": "3 meses"
@@ -72,7 +72,7 @@
     {
       "id": "docker",
       "name": "Docker",
-      "category": "Infrastructure & DevOps",
+      "category": "Infrastructure \u0026 DevOps",
       "months_experience": 24,
       "years_experience": 2,
       "experience_text": "2 años"
@@ -80,7 +80,7 @@
     {
       "id": "linux",
       "name": "Linux (Ubuntu/Debian)",
-      "category": "Infrastructure & DevOps",
+      "category": "Infrastructure \u0026 DevOps",
       "months_experience": 106,
       "years_experience": 8.833333333333334,
       "experience_text": "8 años y 10 meses"
@@ -88,15 +88,15 @@
     {
       "id": "playwright",
       "name": "Playwright / UI Automation",
-      "category": "Automation & QA",
+      "category": "Automation \u0026 QA",
       "months_experience": 62,
       "years_experience": 5.166666666666667,
       "experience_text": "5 años y 2 meses"
     },
     {
       "id": "generative_ai",
-      "name": "IA Generativa (LLMs & Agents)",
-      "category": "Automation & QA",
+      "name": "IA Generativa (LLMs \u0026 Agents)",
+      "category": "Automation \u0026 QA",
       "months_experience": 36,
       "years_experience": 3,
       "experience_text": "3 años"
@@ -104,7 +104,7 @@
     {
       "id": "fyne",
       "name": "Fyne UI (Go Desktop)",
-      "category": "Automation & QA",
+      "category": "Automation \u0026 QA",
       "months_experience": 3,
       "years_experience": 0.25,
       "experience_text": "3 meses"
@@ -112,7 +112,7 @@
     {
       "id": "astro",
       "name": "Astro",
-      "category": "Automation & QA",
+      "category": "Automation \u0026 QA",
       "months_experience": 1,
       "years_experience": 0.08333333333333333,
       "experience_text": "1 mes"
@@ -120,14 +120,14 @@
     {
       "id": "ai_assisted_dev",
       "name": "AI-Assisted Engineering (SDD, TDD, Test Harnesses)",
-      "category": "Metodologías & Prácticas",
+      "category": "Metodologías \u0026 Prácticas",
       "months_experience": 24,
       "years_experience": 2,
       "experience_text": "2 años"
     },
     {
       "id": "help_desk",
-      "name": "Help Desk & Soporte Técnico",
+      "name": "Help Desk \u0026 Soporte Técnico",
       "category": "Habilidades Funcionales",
       "months_experience": 88,
       "years_experience": 7.333333333333333,
@@ -135,39 +135,39 @@
     },
     {
       "id": "leadership",
-      "name": "Liderazgo de Equipos & Proyectos",
+      "name": "Liderazgo de Equipos \u0026 Proyectos",
       "category": "Competencias Blandas",
-      "months_experience": 95,
-      "years_experience": 7.916666666666667,
-      "experience_text": "7 años y 11 meses"
+      "months_experience": 86,
+      "years_experience": 7.166666666666667,
+      "experience_text": "7 años y 2 meses"
     },
     {
       "id": "teamwork",
-      "name": "Trabajo en Equipo & Colaboración",
+      "name": "Trabajo en Equipo \u0026 Colaboración",
       "category": "Competencias Blandas",
-      "months_experience": 120,
-      "years_experience": 10,
-      "experience_text": "10 años"
+      "months_experience": 112,
+      "years_experience": 9.333333333333334,
+      "experience_text": "9 años y 4 meses"
     },
     {
       "id": "assertive_communication",
-      "name": "Comunicación Asertiva & Relacionamiento",
+      "name": "Comunicación Asertiva \u0026 Relacionamiento",
       "category": "Competencias Blandas",
-      "months_experience": 120,
-      "years_experience": 10,
-      "experience_text": "10 años"
+      "months_experience": 112,
+      "years_experience": 9.333333333333334,
+      "experience_text": "9 años y 4 meses"
     },
     {
       "id": "problem_solving",
-      "name": "Resolución de Problemas & Proactividad",
+      "name": "Resolución de Problemas \u0026 Proactividad",
       "category": "Competencias Blandas",
-      "months_experience": 120,
-      "years_experience": 10,
-      "experience_text": "10 años"
+      "months_experience": 112,
+      "years_experience": 9.333333333333334,
+      "experience_text": "9 años y 4 meses"
     },
     {
       "id": "security_mindset",
-      "name": "Cultura de Seguridad & Confiabilidad",
+      "name": "Cultura de Seguridad \u0026 Confiabilidad",
       "category": "Competencias Blandas",
       "months_experience": 88,
       "years_experience": 7.333333333333333,
@@ -176,13 +176,13 @@
   ],
   "work_experience": [
     {
-      "company": "Desarrollo Independiente & Consultoría",
-      "role": "Desarrollador de Software & IoT (Freelance)",
+      "company": "Desarrollo Independiente \u0026 Consultoría",
+      "role": "Desarrollador de Software \u0026 IoT (Freelance)",
       "start_date": "2024-07-01",
-      "end_date": "2026-06-10",
+      "end_date": "2026-06-11",
       "duration_text": "2 años",
       "period_text": "Jul 2024 - Presente",
-      "description": "Diseñé e implementé sistemas distribuidos en Go y C#/.NET para automatización IoT e integración legacy, colaborando con especialistas en hardware electrónico en el prototipado de soluciones embebidas. Aplicación sistemática de metodologías de desarrollo asistido por IA para maximizar la calidad y velocidad de entrega.",
+      "description": "Diseñé e implementé sistemas distribuidos en Go y C#/.NET para automatización IoT, colaborando con especialistas en hardware electrónico en el prototipado de soluciones embebidas. Aplicación sistemática de metodologías de desarrollo asistido por IA para maximizar la calidad y velocidad de entrega.",
       "technologies": [
         "golang",
         "csharp",
@@ -201,7 +201,7 @@
           "name": "RpPOS - Arquitectura IoT (Golden Wash)",
           "description": "Diseñé e implementé la interfaz de usuario y el control de hardware (GPIO) en Go con Fyne UI para un Punto de Venta embebido en Raspberry Pi, optimizando el rendimiento en un entorno de recursos limitados para operaciones comerciales y control de dispositivos en retail.",
           "start_date": "2026-04-01",
-          "end_date": "2026-06-10",
+          "end_date": "2026-06-11",
           "period_text": "Abr 2026 - Presente",
           "duration_text": "3 meses",
           "technologies": [
@@ -213,9 +213,9 @@
         },
         {
           "name": "Proxy Inverso Financiero",
-          "description": "Implementé un proxy inverso en C# que traduce protocolos legacy SOAP a gRPC, habilitando la comunicación eficiente con pasarelas financieras de GetNet/Santander y consolidando la integración de sistemas transaccionales.",
+          "description": "Implementé un proxy inverso en C# que traduce protocolos SOAP a gRPC, habilitando la comunicación eficiente con pasarelas financieras de GetNet/Santander y consolidando la integración de sistemas transaccionales.",
           "start_date": "2026-04-01",
-          "end_date": "2026-06-10",
+          "end_date": "2026-06-11",
           "period_text": "Abr 2026 - Presente",
           "duration_text": "3 meses",
           "technologies": [
@@ -248,7 +248,7 @@
       "end_date": "2024-06-30",
       "duration_text": "6 meses",
       "period_text": "Ene 2024 - Jun 2024",
-      "description": "Proporcioné soporte técnico (Help Desk) a usuarios en múltiples locales, diagnosticando y resolviendo incidencias de infraestructura de TI y sistemas de comunicación. Administré la continuidad operativa de sistemas transaccionales y coordiné la resolución de problemas técnicos con equipos internos.",
+      "description": "Realicé tareas de soporte técnico (Help Desk) a distintas empresas, diagnosticando y resolviendo incidencias de infraestructura de TI y sistemas de comunicación. Administré la continuidad operativa de sistemas transaccionales y coordiné la resolución de problemas técnicos con equipos internos.",
       "technologies": [
         "help_desk",
         "problem_solving",
@@ -275,12 +275,12 @@
     },
     {
       "company": "Bionico / Figital Tech",
-      "role": "Director & Líder de Desarrollo de Software",
+      "role": "Director \u0026 Líder de Desarrollo de Software",
       "start_date": "2018-11-01",
       "end_date": "2023-12-31",
       "duration_text": "5 años y 2 meses",
       "period_text": "Nov 2018 - Dic 2023",
-      "description": "Dirigí el desarrollo de soluciones de automatización de procesos financieros (RPA), microservicios y procesamiento masivo de datos, diseñando una arquitectura observable con RabbitMQ que garantizó la trazabilidad de operaciones críticas.",
+      "description": "Dirigí el desarrollo de soluciones de automatización de procesos administrativos (RPA), microservicios y procesamiento masivo de datos, diseñando una arquitectura observable y distribuída que garantizó la trazabilidad de operaciones críticas de automatización de procesos para diferentes empresas.",
       "technologies": [
         "csharp",
         "sql",
@@ -295,7 +295,7 @@
       "projects": [
         {
           "name": "Framework RPA Financiero",
-          "description": "Desarrollé un framework de bots de escritorio (Windows UI Automation) en C# con observabilidad vía RabbitMQ, automatizando la inserción de datos en sistemas contables y reduciendo significativamente la intervención manual en procesos financieros críticos.",
+          "description": "Desarrollé un framework de bots de escritorio (Windows UI Automation) en C# con observabilidad vía RabbitMQ, automatizando la inserción, lectura y procesamiento de datos en sistemas contables y reduciendo significativamente la intervención manual en procesos financieros críticos.",
           "start_date": "2018-11-01",
           "end_date": "2022-12-31",
           "period_text": "Nov 2018 - Dic 2022",
@@ -309,7 +309,7 @@
         },
         {
           "name": "Motor de Extracción PDF",
-          "description": "Construí un motor inteligente de extracción basado en coordenadas X/Y (PdfPig) sobre PDFs semi-estructurados en C#, habilitando el procesamiento masivo automatizado de facturas y estandarizando la ingesta de documentos financieros.",
+          "description": "Construí un motor inteligente de extracción basado en coordenadas X/Y sobre PDFs semi-estructurados en C#, habilitando el procesamiento masivo automatizado de facturas y estandarizando la ingesta de documentos financieros.",
           "start_date": "2020-06-01",
           "end_date": "2021-06-30",
           "period_text": "Jun 2020 - Jun 2021",
@@ -340,22 +340,6 @@
         "security_mindset"
       ],
       "projects": null
-    },
-    {
-      "company": "PIXI Supermercados",
-      "role": "Supervisor de Operaciones y Logística",
-      "start_date": "2016-07-01",
-      "end_date": "2017-03-31",
-      "duration_text": "9 meses",
-      "period_text": "Jul 2016 - Mar 2017",
-      "description": "Coordiné equipos operativos y supervisé la logística de inventarios en un entorno de alta rotación, implementando controles sistemáticos de stock y optimizando los procesos de recepción de mercadería. Gestión de proveedores y resolución de conflictos operativos.",
-      "technologies": [
-        "leadership",
-        "teamwork",
-        "assertive_communication",
-        "problem_solving"
-      ],
-      "projects": null
     }
   ],
   "education": [
@@ -382,34 +366,26 @@
       "end_date": "2019-07-31",
       "period_text": "Mar 2019 - Jul 2019",
       "status": "Graduado"
-    },
-    {
-      "institution": "Universidad de la República",
-      "degree": "Contador Público",
-      "start_date": "2015-03-01",
-      "end_date": "2016-12-15",
-      "period_text": "Mar 2015 - Dic 2016",
-      "status": "1er año cursado (formación complementaria en gestión financiera y contable)"
     }
   ],
   "projects": [],
   "recommendations": [
     {
-      "author": "<RECOMMENDER_1>",
-      "role": "<ROLE_1>",
-      "relation": "<RELATION_1>",
+      "author": "\u003cRECOMMENDER_1\u003e",
+      "role": "\u003cROLE_1\u003e",
+      "relation": "\u003cRELATION_1\u003e",
       "text": "He tenido el gusto de trabajar con Diego, es un excelente compañero como profesional."
     },
     {
-      "author": "<RECOMMENDER_2>",
-      "role": "<ROLE_2>",
-      "relation": "<RELATION_2>",
+      "author": "\u003cRECOMMENDER_2\u003e",
+      "role": "\u003cROLE_2\u003e",
+      "relation": "\u003cRELATION_2\u003e",
       "text": "Conocí a Diego trabajando en Conexo Cowork, compartiendo espacios libres de trabajo. Diego es una persona que genera buen clima laboral, asertivo en la comunicación, que permanentemente muestra su interés en temas de seguridad compartiendo conocimiento en el día a día."
     },
     {
-      "author": "<RECOMMENDER_3>",
-      "role": "<ROLE_3>",
-      "relation": "<RELATION_3>",
+      "author": "\u003cRECOMMENDER_3\u003e",
+      "role": "\u003cROLE_3\u003e",
+      "relation": "\u003cRELATION_3\u003e",
       "text": "Excelente profesional, dejamos en sus manos la seguridad de la empresa y ha sido un éxito."
     }
   ]

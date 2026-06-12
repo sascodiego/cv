@@ -1,9 +1,9 @@
 # Fuente de verdad consolidada para el CV.
 # Los datos de contacto (email, teléfono, dirección, redes) se inyectan desde .env local.
 personal_info:
-  name: "Diego Sasco"
+  name: "Diego Gabriel Sasco Cordero"
   title: "Desarrollador de Software Senior"
-  about_me: "Soy desarrollador de software con más de 7 años de experiencia, especializado en construir soluciones backend (C#/.NET, Go) y herramientas de automatización para los sectores retail y servicios. Mi experiencia fuerte está en la integración de sistemas, la integracion de pasarelas de pago y la automatización de procesos administrativos críticos mediante software de escritorio y arquitecturas distribuidas.\n\nDe forma complementaria, desarrollo soluciones IoT y software embebido en Linux (Raspberry Pi, ESP32) para el control de dispositivos en puntos de venta y entornos comerciales. Diseño e implemento herramientas pensando siempre en la confiabilidad, la seguridad por diseño y la estabilidad operativa de los sistemas en producción."
+  about_me: "Soy desarrollador de software con más de 7 años de experiencia, especializado en construir soluciones backend y herramientas de automatización para los sectores de retail y servicios. Mi experiencia fuerte está en la integración de sistemas, la integracion de pasarelas de pago y la automatización de procesos administrativos críticos mediante software de escritorio y arquitecturas distribuidas.\n\nDe forma complementaria, desarrollo soluciones IoT y software embebido en Linux (Raspberry Pi, ESP32) para el control de dispositivos en puntos de venta y entornos comerciales. Diseño e implemento herramientas pensando siempre en la confiabilidad, la seguridad por diseño y la estabilidad operativa de los sistemas en producción."
 
 skills:
   # Lenguajes
@@ -85,7 +85,7 @@ work_experience:
     role: "Desarrollador de Software & IoT (Freelance)"
     start_date: "2024-07-01"
     end_date: "present"
-    description: "Diseñé e implementé sistemas distribuidos en Go y C#/.NET para automatización IoT e integración legacy, colaborando con especialistas en hardware electrónico en el prototipado de soluciones embebidas. Aplicación sistemática de metodologías de desarrollo asistido por IA para maximizar la calidad y velocidad de entrega."
+    description: "Diseñé e implementé sistemas distribuidos en Go y C#/.NET para automatización IoT, colaborando con especialistas en hardware electrónico en el prototipado de soluciones embebidas. Aplicación sistemática de metodologías de desarrollo asistido por IA para maximizar la calidad y velocidad de entrega."
     technologies:
       [
         "golang",
@@ -113,7 +113,7 @@ work_experience:
     role: "Soporte Técnico y Operaciones de TI"
     start_date: "2024-01-01"
     end_date: "2024-06-30" # Contrato corto de 6 meses
-    description: "Proporcioné soporte técnico (Help Desk) a usuarios en múltiples locales, diagnosticando y resolviendo incidencias de infraestructura de TI y sistemas de comunicación. Administré la continuidad operativa de sistemas transaccionales y coordiné la resolución de problemas técnicos con equipos internos."
+    description: "Realicé tareas de soporte técnico (Help Desk) a distintas empresas, diagnosticando y resolviendo incidencias de infraestructura de TI y sistemas de comunicación. Administré la continuidad operativa de sistemas transaccionales y coordiné la resolución de problemas técnicos con equipos internos."
     technologies:
       [
         "help_desk",
@@ -136,7 +136,7 @@ work_experience:
     role: "Director & Líder de Desarrollo de Software"
     start_date: "2018-11-01"
     end_date: "2023-12-31"
-    description: "Dirigí el desarrollo de soluciones de automatización de procesos financieros (RPA), microservicios y procesamiento masivo de datos, diseñando una arquitectura observable con RabbitMQ que garantizó la trazabilidad de operaciones críticas."
+    description: "Dirigí el desarrollo de soluciones de automatización de procesos administrativos (RPA), microservicios y procesamiento masivo de datos, diseñando una arquitectura observable y distribuída que garantizó la trazabilidad de operaciones críticas de automatización de procesos para diferentes empresas."
     technologies:
       [
         "csharp",
@@ -169,15 +169,6 @@ work_experience:
       ]
     projects: ["retail_automation", "opt_administrativa"]
 
-  - company: "PIXI Supermercados"
-    role: "Supervisor de Operaciones y Logística"
-    start_date: "2016-07-01"
-    end_date: "2017-03-31"
-    description: "Coordiné equipos operativos y supervisé la logística de inventarios en un entorno de alta rotación, implementando controles sistemáticos de stock y optimizando los procesos de recepción de mercadería. Gestión de proveedores y resolución de conflictos operativos."
-    technologies:
-      ["leadership", "teamwork", "assertive_communication", "problem_solving"]
-    projects: []
-
 education:
   - institution: "Universidad ORT Uruguay"
     degree: "Analista en Infraestructura Informática"
@@ -197,12 +188,6 @@ education:
     end_date: "2019-07-31"
     status: "Graduado"
 
-  - institution: "Universidad de la República"
-    degree: "Contador Público"
-    start_date: "2015-03-01"
-    end_date: "2016-12-15"
-    status: "1er año cursado (formación complementaria en gestión financiera y contable)"
-
 # Diccionario Global de Proyectos
 # El pipeline los inyecta en su respectiva compañía y deja los "huérfanos" (ej: CV Pipeline) al final en Proyectos Independientes
 projects:
@@ -218,7 +203,7 @@ projects:
 
   - id: proxy_getnet
     name: "Proxy Inverso Financiero"
-    description: "Implementé un proxy inverso en C# que traduce protocolos legacy SOAP a gRPC, habilitando la comunicación eficiente con pasarelas financieras de GetNet/Santander y consolidando la integración de sistemas transaccionales."
+    description: "Implementé un proxy inverso en C# que traduce protocolos SOAP a gRPC, habilitando la comunicación eficiente con pasarelas financieras de GetNet/Santander y consolidando la integración de sistemas transaccionales."
     start_date: "2026-04-01"
     end_date: "present"
     technologies: ["csharp", "grpc", "soap"]
@@ -238,7 +223,7 @@ projects:
     name: "Flujo de Ingeniería Asistida por IA (SDD & TDD)"
     visible_web: false
     visible_pdf: true
-    description: "Adopción de un flujo de trabajo para el desarrollo con IA de forma profesional. Aplicación sistemática de Spec-Driven Development (SDD), Test-Driven Development (TDD) e integración con test harnesses externos para simulación de escenarios lógicos complejos y validación de software en entornos aislados."
+    description: "Adopción de un flujo de trabajo para el desarrollo con IA de forma profesional. Aplicación sistemática de Spec-Driven Development (SDD), Test-Driven Development (TDD) y Harness Engineering."
     start_date: "2024-07-01"
     end_date: "present"
     technologies: ["generative_ai", "python", "docker", "ai_assisted_dev"]
@@ -256,7 +241,7 @@ projects:
   # Proyectos Bionico
   - id: framework_rpa
     name: "Framework RPA Financiero"
-    description: "Desarrollé un framework de bots de escritorio (Windows UI Automation) en C# con observabilidad vía RabbitMQ, automatizando la inserción de datos en sistemas contables y reduciendo significativamente la intervención manual en procesos financieros críticos."
+    description: "Desarrollé un framework de bots de escritorio (Windows UI Automation) en C# con observabilidad vía RabbitMQ, automatizando la inserción, lectura y procesamiento de datos en sistemas contables y reduciendo significativamente la intervención manual en procesos financieros críticos."
     start_date: "2018-11-01"
     end_date: "2022-12-31"
     technologies: ["csharp", "sql", "rabbitmq"]
@@ -265,7 +250,7 @@ projects:
 
   - id: extraccion_pdf
     name: "Motor de Extracción PDF"
-    description: "Construí un motor inteligente de extracción basado en coordenadas X/Y (PdfPig) sobre PDFs semi-estructurados en C#, habilitando el procesamiento masivo automatizado de facturas y estandarizando la ingesta de documentos financieros."
+    description: "Construí un motor inteligente de extracción basado en coordenadas X/Y sobre PDFs semi-estructurados en C#, habilitando el procesamiento masivo automatizado de facturas y estandarizando la ingesta de documentos financieros."
     start_date: "2020-06-01"
     end_date: "2021-06-30"
     technologies: ["csharp"]
@@ -286,7 +271,7 @@ projects:
     name: "Automatización de Inventario y Retail"
     visible_web: false
     visible_pdf: true
-    description: "Creación de herramientas personalizadas en C# para automatizar la creación de artículos, precios, ingresos de facturas e importaciones."
+    description: "Creación de herramientas personalizadas en C# para automatizar la conciliacion financiera, creación de artículos, precios, ingresos de facturas e importaciones."
     start_date: "2017-03-01"
     end_date: "2018-12-31"
     technologies: ["csharp", "sql"]
